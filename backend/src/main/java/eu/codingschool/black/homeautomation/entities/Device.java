@@ -3,6 +3,9 @@ package eu.codingschool.black.homeautomation.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 
 @Entity
 public class Device {
@@ -14,6 +17,12 @@ public class Device {
   private String type;
   private boolean status;
   private String information;
+  @ManyToOne
+  @JoinColumn(name = "room")
+  private Room room;
+
+
+
 
 
   public long getId () {

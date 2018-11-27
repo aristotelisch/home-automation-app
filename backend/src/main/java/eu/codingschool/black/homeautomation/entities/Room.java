@@ -3,6 +3,10 @@ package eu.codingschool.black.homeautomation.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Room {
@@ -12,6 +16,9 @@ public class Room {
 
   private String name;
 
+
+  @OneToMany(mappedBy = "room")
+  private List<Device> devices;
   public long getId() {
     return id;
   }
