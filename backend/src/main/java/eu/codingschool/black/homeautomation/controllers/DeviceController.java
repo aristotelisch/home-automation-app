@@ -2,6 +2,7 @@ package eu.codingschool.black.homeautomation.controllers;
 
 import eu.codingschool.black.homeautomation.entities.Device;
 import eu.codingschool.black.homeautomation.repositories.DeviceRepository;
+import eu.codingschool.black.homeautomation.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +19,12 @@ import java.util.stream.StreamSupport;
 public class DeviceController {
 
   @Autowired
-  private DeviceRepository repository;
+  private DeviceService service;
 
   @CrossOrigin(origins = "http://localhost:4200")
   @GetMapping("/devices")
   public Collection<Device> getDevices() {
-    return StreamSupport.stream(repository.findAll().spliterator(), false)
+    return StreamSupport.stream(service.findAll().spliterator(), false)
             .collect(Collectors.toList());
   }
 }
