@@ -9,6 +9,11 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { KitchenDevicesComponent } from './kitchen-devices/kitchen-devices.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { LivingroomDevicesComponent } from './livingroom-devices/livingroom-devices.component';
+import { BedroomDevicesComponent } from './bedroom-devices/bedroom-devices.component';
+import { BathroomDevicesComponent } from './bathroom-devices/bathroom-devices.component';
+import { GarageDevicesComponent } from './garage-devices/garage-devices.component';
+import { YardDevicesComponent } from './yard-devices/yard-devices.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     HomePageComponent,
     KitchenDevicesComponent,
     LoginPageComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    LivingroomDevicesComponent,
+    BedroomDevicesComponent,
+    BathroomDevicesComponent,
+    GarageDevicesComponent,
+    YardDevicesComponent
   ],
   imports: [
     BrowserModule,

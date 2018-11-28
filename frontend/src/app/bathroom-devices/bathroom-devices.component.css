@@ -31,12 +31,12 @@
   } 
 
 
-  #kitchen .kitchen-item {
+  #bathroom .bathroom-item {
     right: 0;
     margin: 0 0 15px;
   }
   
-  #kitchen .kitchen-item .kitchen-link {
+  #bathroom .bathroom-item .bathroom-link {
     position: relative;
     display: block;
     max-width: 400px;
@@ -44,7 +44,7 @@
     cursor: pointer;
   }
   
-  #kitchen .kitchen-item .kitchen-link {
+  #bathroom .bathroom-item .bathroom-link {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -54,11 +54,11 @@
     background:#333;
   }
   
-  #kitchen .kitchen-item {
+  #bathroom .bathroom-item {
     opacity: 1;
   }
   
-  #kitchen .kitchen-item .kitchen-link-content {
+  #bathroom .bathroom-item .bathroom-link-content {
     font-size: 20px;
     position: absolute;
     top: 50%;
@@ -69,16 +69,16 @@
     color: white;
   }
   
-  #kitchen .kitchen-item .kitchen-link-content i {
+  #bathroom .bathroom-item .bathroom-link-content i {
     margin-top: -12px;
   }
   
-  #kitchen .kitchen-item .kitchen-link-content h3,
-  #kitchen .kitchen-item .kitchen-link-content h4 {
+  #bathroom .bathroom-item .bathroom-link-content h3,
+  #bathroom .bathroom-item .bathroom-link-content h4 {
     margin: 0;
   }
   
-  #kitchen .kitchen-item .kitchen-caption {
+  #bathroom .bathroom-item .bathroom-caption {
     max-width: 400px;
     margin: 0 auto;
     padding: 25px;
@@ -87,24 +87,24 @@
     /* background-color: #fff; */
   }
   
-  #kitchen .kitchen-item .kitchen-caption h4 {
+  #bathroom .bathroom-item .bathroom-caption h4 {
     margin: 0;
     text-transform: none;
   }
   
-  #kitchen .kitchen-item .kitchen-caption p {
+  #bathroom .bathroom-item .bathroom-caption p {
     font-size: 16px;
     font-style: italic;
     margin: 0;
     font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   }
   
-  #kitchen * {
+  #bathroom * {
     z-index: 2;
   }
   
   @media (min-width: 767px) {
-    #kitchen .kitchen-item {
+    #bathroom .bathroom-item {
       margin: 0 0 30px;
     }
   }

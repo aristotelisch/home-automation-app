@@ -1,85 +1,99 @@
-<div class="bg-light" id="home">
+<div class="bg-light" id="kitchen">
   <div class="container2">
     <div class="row">
       <div class="col-lg-12 text-center">
         <br>
         <h2 class="section-heading text-uppercase">DEVICES</h2>
-        <!-- <h3 class="section-subheading text-muted">Rooms and Devices.</h3> -->
+        <!-- <h4 class="section-subheading text-muted">Check Devices</h4> -->
+        <hr>
         <br>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4 col-sm-6 home-item">
-        <a class="home-link" data-toggle="modal" href="user/kitchen">
-          <div class="home-hover">
-            <div class="home-hover-content">
-              <i class="fas fa-plus fa-3x"></i>
-            </div> 
-          </div> 
-          <!-- <img class="img-fluid" src="assets/img/devices/1.jpg" alt=""> -->
-        </a>
-         <div class="container">
-              <img class="img-fluid" src="assets/img/devices/1.jpg" alt="">
-              <div class="onoffswitch2">
-                 <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-                 <label class="onoffswitch-label" for="myonoffswitch">
-                   <span class="onoffswitch-inner"></span>
-                   <span class="onoffswitch-switch"></span>
-                 </label>
-              </div>
-         </div>
-         <div class="device-caption">
-           <!-- <h5>Oven</h5> -->
-         </div>
-      </div>
-      <div class="col-md-4 col-sm-6 home-item">
-        <a class="home-link" data-toggle="modal" href="/user/kitchen">
-          <div class="home-hover">
-            <div class="home-hover-content">
-              <i class="fas fa-plus fa-3x"></i>
+      <div class="col-md-4 col-sm-6 kitchen-item">
+            <div class="container" class="text-center">
+                <div class="row" class="text-center">
+                 <button [ngStyle]="{'color': 'white', 'background-color': 'black'}" onclick="document.getElementById('myImage0').src='assets/img/devices/9.jpg'">OFF</button>
+                 <button [ngStyle]="{'color': 'black', 'background-color': 'white'}" onclick="document.getElementById('myImage0').src='assets/img/devices/10.jpg'">ON</button> 
+                </div>
+                 <img id="myImage0" src="assets/img/devices/9.jpg" style="width:300px" class="rounded-circle">
             </div>
-          </div>
-          <!-- <img class="img-fluid" src="assets/img/devices/2.jpg" alt=""> -->
-        </a>
-
-        <div class="container">
-          <img class="img-fluid" src="assets/img/devices/2.jpg" alt="">
-          <!-- <div class="onoffswitch">
-             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-             <label class="onoffswitch-label" for="myonoffswitch">
-               <span class="onoffswitch-inner"></span>
-               <span class="onoffswitch-switch"></span>
-             </label>
-          </div> -->
-        </div>
-        <div class="home-caption">
-          <!-- <h5>Microwave</h5> -->
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 home-item">
-        <a class="home-link" data-toggle="modal" href="/user/kitchen">
-          <div class="home-hover">
-            <div class="home-hover-content">
-              <i class="fas fa-plus fa-3x"></i>
+            <div class="kitchen-caption" class="text-center">
+                <div class="row" class="text-center">
+                    <h5>Type: lights</h5>
+                    <h5>Informations:</h5>
+                    <p class="text-muted">Status:</p>
+                </div>
             </div>
-          </div>
-          <!-- <img class="img-fluid" src="assets/img/devices/3.jpg" alt=""> -->
-        </a>
-
-        <div class="container">
-          <img class="img-fluid" src="assets/img/devices/3.jpg" alt="">
-          <div class="onoffswitch">
-             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-             <label class="onoffswitch-label" for="myonoffswitch">
-               <span class="onoffswitch-inner"></span>
-               <span class="onoffswitch-switch"></span>
-             </label>
-          </div>
-     </div>
-     <div class="home-caption">
-          <!-- <h5>Fridge</h5> -->
-        </div>
+            <br>
       </div>
-    </div>
+      <div class="col-md-4 col-sm-6 kitchen-item">
+        <div class="container" class="text-center">
+            <div class="row" class="text-center">
+             <button [ngStyle]="{'color': 'white', 'background-color': 'black'}" onclick="document.getElementById('myImage').src='assets/img/devices/11.jpg'">OFF</button>
+             <button [ngStyle]="{'color': 'black', 'background-color': 'white'}" onclick="document.getElementById('myImage').src='assets/img/devices/12.jpg'">ON</button> 
+            </div>
+             <img id="myImage" src="assets/img/devices/11.jpg" style="width:300px" class="rounded-circle">
+        </div>
+        <div class="kitchen-caption" class="text-center">
+            <div class="row" class="text-center">
+                <h5>Type: oven</h5>
+                <h5>Informations:</h5>
+                <p class="text-muted">Status:</p>
+            </div>
+        </div>
+        <br>
+      </div>
+      <div class="col-md-4 col-sm-6 kitchen-item">
+        <div class="container" class="text-center">
+          <div class="row" class="text-center">
+             <button [ngStyle]="{'color': 'white', 'background-color': 'black'}" onclick="document.getElementById('myImage2').src='assets/img/devices/21.jpg'">OFF</button>
+             <button [ngStyle]="{'color': 'black', 'background-color': 'white'}" onclick="document.getElementById('myImage2').src='assets/img/devices/22.jpg'">ON</button>
+          </div>
+          <img id="myImage2" src="assets/img/devices/21.jpg" style="width:300px" class="rounded-circle">
+        </div>
+        <div class="kitchen-caption" class="text-center">
+            <div class="row" class="text-center">
+                <h5>Type: microwave</h5>
+                <h5>Informations:</h5>
+                <p class="text-muted">Status:</p>
+            </div>
+        </div>
+        <br>
+      </div>
+      <div class="col-md-4 col-sm-6 kitchen-item">
+        <div class="container" class="text-center">
+          <div class="row" class="text-center">
+             <button [ngStyle]="{'color': 'white', 'background-color': 'black'}" onclick="document.getElementById('myImage3').src='assets/img/devices/31.jpg'">OFF</button>
+             <button [ngStyle]="{'color': 'black', 'background-color': 'white'}" onclick="document.getElementById('myImage3').src='assets/img/devices/32.jpg'">ON</button>
+          </div>
+          <img id="myImage3" src="assets/img/devices/31.jpg" style="width:300px" class="rounded-circle">
+        </div>
+        <div class="kitchen-caption" class="text-center">
+            <div class="row" class="text-center">
+                <h5>Type: fridge</h5>
+                <h5>Informations:</h5>
+                <p class="text-muted">Status:</p>
+            </div>
+        </div>
+        <br>
+      </div>
+      <div class="col-md-4 col-sm-6 kitchen-item">
+        <div class="container" class="text-center">
+          <div class="row" class="text-center">
+             <button [ngStyle]="{'color': 'white', 'background-color': 'black'}" onclick="document.getElementById('myImage4').src='assets/img/devices/13.jpg'">OFF</button>
+             <button [ngStyle]="{'color': 'black', 'background-color': 'white'}" onclick="document.getElementById('myImage4').src='assets/img/devices/14.jpg'">ON</button>
+          </div>
+          <img id="myImage4" src="assets/img/devices/13.jpg" style="width:300px" class="rounded-circle">
+        </div>
+        <div class="kitchen-caption" class="text-center">
+            <div class="row" class="text-center">
+                <h5>Type: dishwasher</h5>
+                <h5>Informations:</h5>
+                <p class="text-muted">Status:</p>
+            </div>
+        </div>
+        <br>
+      </div>
   </div>
 </div> 
