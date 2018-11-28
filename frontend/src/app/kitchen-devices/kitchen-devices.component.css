@@ -1,0 +1,91 @@
+/* Container needed to position the button. Adjust the width as needed */
+.container {
+    position: relative;
+    width: 100%;
+  } 
+  
+  /* Make the image responsive */
+   .container img {
+    width: 100%;
+    height: auto;
+  } 
+  
+  /* Style the button and place it in the middle of the container/image */
+  .container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .container .btn:hover {
+    background-color: black;
+  } 
+  
+  .container .onoffswitch {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          background-color: #555;
+          color: white;
+          font-size: 16px;
+          padding: 12px 24px;
+          border: none;
+          cursor: pointer;
+          border-radius: 5px;
+  
+          width: 90px;
+          -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+      }
+  
+  .container .onoffswitch-checkbox {
+          display: none;
+      }
+  .container   .onoffswitch-label {
+          display: block; overflow: hidden; cursor: pointer;
+          border: 2px solid #999999; border-radius: 20px;
+      }
+  .container   .onoffswitch-inner {
+          display: block; width: 200%; margin-left: -100%;
+          transition: margin 0.3s ease-in 0s;
+      }
+  .container  .onoffswitch-inner:before, .onoffswitch-inner:after {
+          display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+          font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+          box-sizing: border-box;
+      }
+  .container  .onoffswitch-inner:before {
+          content: "ON";
+          padding-left: 10px;
+          background-color: #34A7C1; color: #FFFFFF;
+      }
+  .container .onoffswitch-inner:after {
+          content: "OFF";
+          padding-right: 10px;
+          background-color: #EEEEEE; color: #999999;
+          text-align: right;
+      }
+  .container  .onoffswitch-switch {
+          display: block; width: 18px; margin: 6px;
+          background: #FFFFFF;
+          position: absolute; top: 0; bottom: 0;
+          right: 56px;
+          border: 2px solid #999999; border-radius: 20px;
+          transition: all 0.3s ease-in 0s; 
+      }
+  .container .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+          margin-left: 0;
+      }
+  .container .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+          right: 0px; 
+      }
