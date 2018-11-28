@@ -22,4 +22,10 @@ describe('KitchenDevicesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  var button = document.querySelector('.button');
+
+
+
+
 });
