@@ -23,7 +23,7 @@ public class Device {
   }
 
   public void setId (long id) {
-    this.deviceid = deviceid;
+    this.deviceid = id;
   }
 
   public String getName () {
@@ -31,7 +31,7 @@ public class Device {
   }
 
   public void setName (String name) {
-    this.devicename = devicename;
+    this.devicename = name;
   }
 
   public String getType () {

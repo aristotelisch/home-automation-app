@@ -15,4 +15,6 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public List<Device> findAll(){return repository.findAll();}
+
+    public Device save(Device device){return repository.save(device);}
 }
