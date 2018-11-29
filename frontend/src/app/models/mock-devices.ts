@@ -1,3 +1,7 @@
+/*
+
+// not necessary now
+
 export let mock_devices = [
     {
       id: 1,
@@ -21,3 +25,4 @@ export let mock_devices = [
       information: null
     }
   ];
+*/
