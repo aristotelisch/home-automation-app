@@ -22,5 +22,18 @@ export class DevicesComponent implements OnInit {
     this.deviceService.getDevices().subscribe(value => this.devices = value);
   }
 
+  //
+  addDevice() { 
+    let device = new Device(); 
+    this.devices.push(device); 
+  }
+  removeDevice() {  
+    //let index = this.devices.indexOf(device); 
+    //this.devices.splice(index,1);
+  }
+  updateDevice() {  
+    //
+  }
+
 }
 

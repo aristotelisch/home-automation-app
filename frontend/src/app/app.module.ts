@@ -14,6 +14,7 @@ import { BedroomDevicesComponent } from './bedroom-devices/bedroom-devices.compo
 import { BathroomDevicesComponent } from './bathroom-devices/bathroom-devices.component';
 import { GarageDevicesComponent } from './garage-devices/garage-devices.component';
 import { YardDevicesComponent } from './yard-devices/yard-devices.component';
+import { AdminTablesComponent } from './admin-tables/admin-tables.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { YardDevicesComponent } from './yard-devices/yard-devices.component';
     BedroomDevicesComponent,
     BathroomDevicesComponent,
     GarageDevicesComponent,
-    YardDevicesComponent
+    YardDevicesComponent,
+    AdminTablesComponent
   ],
   imports: [
     BrowserModule,
