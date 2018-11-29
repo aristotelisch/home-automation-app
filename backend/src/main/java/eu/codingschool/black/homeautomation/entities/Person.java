@@ -1,25 +1,27 @@
 package eu.codingschool.black.homeautomation.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Person {
 
     @Id
     @GeneratedValue
-    private long id;
-    private String name;
+    private long personid;
+    private String personname;
     private String surname;
     private String email;
     private String password;
     private String role;
+    @ManyToMany
+    @JoinTable(name = "persondevice", joinColumns = @JoinColumn(name = "personid", referencedColumnName = "personid"), inverseJoinColumns = @JoinColumn(name = "deviceid", referencedColumnName = "deviceid"))
+    private Set<Device> device;
 
-    public Person(long id, String name, String surname, String email, String password, String role) {
-        this.id = id;
-        this.name = name;
+    public Person(long personid, String personname, String surname, String email, String password, String role) {
+        this.personid = personid;
+        this.personname = personname;
         this.surname = surname;
         this.email = email;
         this.password = password;
@@ -28,19 +30,19 @@ public class Person {
 
 
     public long getId() {
-        return id;
+        return personid;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.personid = personid;
     }
 
     public String getName() {
-        return name;
+        return personname;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.personname = personname;
     }
 
     public String getSurname() {

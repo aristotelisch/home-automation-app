@@ -1,19 +1,14 @@
 package eu.codingschool.black.homeautomation.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+import javax.persistence.*;
 
 @Entity
 public class Device {
   @Id
   @GeneratedValue
-  private long id;
+  private long deviceid;
 
-  private String name;
+  private String devicename;
   private String type;
   private boolean status;
   private String information;
@@ -23,22 +18,20 @@ public class Device {
 
 
 
-
-
   public long getId () {
-    return id;
+    return deviceid;
   }
 
   public void setId (long id) {
-    this.id = id;
+    this.deviceid = deviceid;
   }
 
   public String getName () {
-    return name;
+    return devicename;
   }
 
   public void setName (String name) {
-    this.name = name;
+    this.devicename = devicename;
   }
 
   public String getType () {
@@ -67,6 +60,6 @@ public class Device {
 
   @Override
   public String toString() {
-    return this.id + " " +this.name;
+    return this.deviceid + " " +this.devicename;
   }
 }
