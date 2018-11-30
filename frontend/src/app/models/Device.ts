@@ -5,3 +5,4 @@ export class Device {
   status: boolean;
   information: string;
 }
+
