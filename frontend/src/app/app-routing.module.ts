@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'home/bathroom', component: BathroomDevicesComponent },
   { path: 'home/garage', component: GarageDevicesComponent },
   { path: 'home/yard', component: YardDevicesComponent },
+  { path: 'rooms', component: HomePageComponent, pathMatch: 'full' },
 
   //
   { path: 'devices', component: DevicesComponent, pathMatch: 'full' }
