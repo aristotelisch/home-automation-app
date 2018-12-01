@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Userrole {
+public class Personrole {
     @Id
     @GeneratedValue
     private long roleid;

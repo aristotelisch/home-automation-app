@@ -14,7 +14,9 @@ public class Person {
     private String surname;
     private String email;
     private String password;
-    private String role;
+    @ManyToOne
+    @JoinColumn(name = "role")
+    protected Personrole role;
     @ManyToMany
     @JoinTable(name = "persondevice", joinColumns = @JoinColumn(name = "personid", referencedColumnName = "personid"), inverseJoinColumns = @JoinColumn(name = "deviceid", referencedColumnName = "deviceid"))
     private Set<Device> device;
