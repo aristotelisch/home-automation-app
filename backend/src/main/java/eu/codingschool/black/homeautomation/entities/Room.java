@@ -14,14 +14,25 @@ public class Room {
   @GeneratedValue
   private long id;
 
+  public Room () {
+
+  }
+
+  public Room (String name) {
+    this.name = name;
+  }
+
   private String name;
 
 
   @OneToMany(mappedBy = "room")
   private List<Device> devices;
+
   public long getId() {
     return id;
   }
+
+  public List<Device> getDevices() { return this.devices; }
 
   public void setId(long id) {
     this.id = id;
