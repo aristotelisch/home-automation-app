@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {DeviceService} from '../devices/device.service';
 import {RoomsService} from './rooms.service';
-import {Room} from '../models/room';
+import {Room} from '../models/Room';
 
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  selector: 'app-rooms',
+  templateUrl: './rooms.component.html',
+  styleUrls: ['./rooms.component.css']
 })
 export class RoomsComponent implements OnInit {
 
