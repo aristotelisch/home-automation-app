@@ -15,19 +15,19 @@ public class Person {
     private String email;
     private String password;
     @ManyToOne
-    @JoinColumn(name = "role")
-    protected PersonRole role;
+    @JoinColumn(name = "personrole")
+    protected PersonRole personrole;
     @ManyToMany
     @JoinTable(name = "persondevice", joinColumns = @JoinColumn(name = "personid", referencedColumnName = "personid"), inverseJoinColumns = @JoinColumn(name = "deviceid", referencedColumnName = "deviceid"))
     private Set<Device> device;
 
-    public Person(long personid, String personname, String surname, String email, String password, PersonRole role) {
+    public Person(long personid, String personname, String surname, String email, String password, PersonRole personrole) {
         this.personid = personid;
         this.personname = personname;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.personrole = personrole;
     }
 
 
@@ -71,12 +71,12 @@ public class Person {
         this.password = password;
     }
 
-    public PersonRole getRole() {
-        return role;
+    public PersonRole getPersonrole() {
+        return personrole;
     }
 
-    public void setRole(PersonRole role) {
-        this.role = role;
+    public void setPersonrole(PersonRole personrole) {
+        this.personrole = personrole;
     }
 
 
