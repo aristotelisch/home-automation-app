@@ -7,14 +7,12 @@ import { DevicesComponent } from './devices/devices.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './home-page/home-page.component';
 import { KitchenDevicesComponent } from './kitchen-devices/kitchen-devices.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { LivingroomDevicesComponent } from './livingroom-devices/livingroom-devices.component';
 import { BedroomDevicesComponent } from './bedroom-devices/bedroom-devices.component';
 import { BathroomDevicesComponent } from './bathroom-devices/bathroom-devices.component';
 import { GarageDevicesComponent } from './garage-devices/garage-devices.component';
 import { YardDevicesComponent } from './yard-devices/yard-devices.component';
-import { AdminTablesComponent } from './admin-tables/admin-tables.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +20,12 @@ import { AdminTablesComponent } from './admin-tables/admin-tables.component';
     DevicesComponent,
     HomePageComponent,
     KitchenDevicesComponent,
-    LoginPageComponent,
-    AdminPageComponent,
+    AuthenticateComponent,
     LivingroomDevicesComponent,
     BedroomDevicesComponent,
     BathroomDevicesComponent,
     GarageDevicesComponent,
-    YardDevicesComponent,
-    AdminTablesComponent
+    YardDevicesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {DevicesComponent} from './devices/devices.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
-import { AdminTablesComponent } from './admin-tables/admin-tables.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { KitchenDevicesComponent } from './kitchen-devices/kitchen-devices.component';
 import { LivingroomDevicesComponent } from './livingroom-devices/livingroom-devices.component';
@@ -14,10 +12,9 @@ import { YardDevicesComponent } from './yard-devices/yard-devices.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/login',  pathMatch: 'full'},
-  { path: 'login', component: LoginPageComponent },
-  { path: 'admin', component: AdminPageComponent },
-  //{ path: 'admin/tables', component: DevicesComponent, pathMatch: 'full' },
+  { path: '', redirectTo: '/authenticate',  pathMatch: 'full'},
+  { path: 'authenticate', component: AuthenticateComponent },
+
   { path: 'home', component: HomePageComponent },
   { path: 'home/kitchen', component: KitchenDevicesComponent },
   { path: 'home/livingroom', component: LivingroomDevicesComponent },
