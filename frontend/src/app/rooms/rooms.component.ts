@@ -9,7 +9,7 @@ import {Room} from '../models/room';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class RoomsComponent implements OnInit {
 
   rooms: Room[] = [];
 
