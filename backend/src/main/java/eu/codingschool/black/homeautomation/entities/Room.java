@@ -1,11 +1,8 @@
 package eu.codingschool.black.homeautomation.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import net.bytebuddy.implementation.bind.annotation.Default;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,15 +11,27 @@ public class Room {
   @GeneratedValue
   private long id;
 
-  public Room () {
-
-  }
-
-  public Room (String name) {
-    this.name = name;
-  }
-
   private String name;
+
+  @Column(name = "image", nullable = false, columnDefinition = "varchar(255) default 'default_room.jpg'")
+  private String image;
+
+  public Room () {
+  }
+
+  public String getImage () {
+    return image;
+  }
+
+  public void setImage (String image) {
+    this.image = image;
+  }
+
+  public Room (String name, String image) {
+    this.name = name;
+    this.image = image;
+  }
+
 
 
   @OneToMany(mappedBy = "room")

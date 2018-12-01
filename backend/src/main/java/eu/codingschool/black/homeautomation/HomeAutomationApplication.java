@@ -30,9 +30,9 @@ public class HomeAutomationApplication implements CommandLineRunner {
 	@Override
 	public void run (String... args) throws Exception {
 
-	  Room lRoom1 = new Room ("Living Room");
+	  Room lRoom1 = new Room ("Living Room", "living_room.jpg");
 		roomService.save (lRoom1);
-		Room lRoom2 = new Room ("Bedroom");
+		Room lRoom2 = new Room ("Bedroom", "bedroom.jpg");
 		roomService.save (lRoom2);
 
 		deviceService.save (new Device ("Living Room Light 1", "onoff", true, "Living Room Light is Switched ON", lRoom1));
