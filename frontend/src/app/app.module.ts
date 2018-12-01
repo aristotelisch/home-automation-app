@@ -15,6 +15,7 @@ import { BathroomDevicesComponent } from './bathroom-devices/bathroom-devices.co
 import { GarageDevicesComponent } from './garage-devices/garage-devices.component';
 import { YardDevicesComponent } from './yard-devices/yard-devices.component';
 import { AdminTablesComponent } from './admin-tables/admin-tables.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AdminTablesComponent } from './admin-tables/admin-tables.component';
     BathroomDevicesComponent,
     GarageDevicesComponent,
     YardDevicesComponent,
-    AdminTablesComponent
+    AdminTablesComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
