@@ -26,7 +26,7 @@ export class DevicesComponent implements OnInit {
   addDevice() { 
     let device = new Device(); 
     this.devices.push(device);  // awaiting input from Marilia 
-    //this.deviceService.addDevice(device).subscribe(value => device = value);   // workInProgress ***
+    this.deviceService.addDevice(device).subscribe(value => device = value);   // workInProgress ***
     console.log("service.addDevice returned");
     console.log(device);
   }
