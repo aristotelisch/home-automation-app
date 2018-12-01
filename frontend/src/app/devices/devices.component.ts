@@ -17,22 +17,27 @@ export class DevicesComponent implements OnInit {
   ngOnInit() {
     this.getDevices();
   }
-
+  
   getDevices(): void {
     this.deviceService.getDevices().subscribe(value => this.devices = value);
   }
 
-  // //
-  // addDevice() {
-  //   let device = new Device();
-  //   this.devices.push(device);
-  // }
-  // removeDevice() {
-  //   //let index = this.devices.indexOf(device);
-  //   //this.devices.splice(index,1);
-  // }
-  // updateDevice() {
-  //   //
-  // // }
+  
+  addDevice(id: number, name: string, status: boolean, type: string, information: string) { 
+    let device = new Device(id, name, status, type, information); 
+    //this.devices.push(device); 
+    this.deviceService.addDevice(device).subscribe(value => device = value);   // workInProgress ***
+    this.devices.push(device); 
+    console.log("service.addDevice returned");
+    console.log(device);
+  }
+  removeDevice() {  
+    //let index = this.devices.indexOf(device); 
+    //this.devices.splice(index,1);
+  }
+  updateDevice() {  
+    //
+  }
+
 }
 
