@@ -17,9 +17,11 @@ export class DeviceService {
     return this.http.get<Device[]>(this.devicesUrl);
   }
 
+  private temp: Observable<Device>;
   addDevice(device: Device): Observable<Device>{  // workInProgress ***
     console.log("service.addDevice invoked");
-    return this.http.post<Device>(this.devicesUrl + '/add', device)  
+    console.log(this.temp = this.http.post<Device>(this.devicesUrl + '/add', device))
+    return this.temp;  
   }
 }
 
