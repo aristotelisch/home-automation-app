@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './devices/devices.component';
+
 import { RoomsComponent } from './rooms/rooms.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { RoomComponent } from './room/room.component';
@@ -16,9 +17,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AuthenticateComponent,
     DashboardComponent,
     DevicesComponent,
+
     // DeviceComponent TODO
     RoomsComponent,
-    RoomComponent,
+    RoomComponent
+    
   ],
   imports: [
     BrowserModule,
