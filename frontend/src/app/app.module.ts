@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './devices/devices.component';
+
 import { RoomsComponent } from './rooms/rooms.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 import { RoomComponent } from './room/room.component';
@@ -23,6 +24,7 @@ import {AppService} from './app.service';
     AuthenticateComponent,
     DashboardComponent,
     DevicesComponent,
+
     // DeviceComponent TODO
     RoomsComponent,
     RoomComponent,
