@@ -8,8 +8,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class DeviceService {
-  // devices: Device[] = mock_devices;
   private devicesUrl = 'http://localhost:8080/devices';
+  private temp: Observable<Device>;
 
   constructor(private http: HttpClient) { }
 
@@ -17,11 +17,10 @@ export class DeviceService {
     return this.http.get<Device[]>(this.devicesUrl);
   }
 
-  private temp: Observable<Device>;
-  addDevice(device: Device): Observable<Device>{  // workInProgress ***
-    console.log("service.addDevice invoked");
-    console.log(this.temp = this.http.post<Device>(this.devicesUrl + '/add', device))
-    return this.temp;  
+  addDevice(device: Device): Observable<Device> {  // workInProgress ***
+    console.log('service.addDevice invoked');
+    console.log(this.temp = this.http.post<Device>(this.devicesUrl + '/add', device));
+    return this.temp;
   }
 }
 

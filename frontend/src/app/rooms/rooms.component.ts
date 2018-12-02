@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DeviceService} from '../devices/device.service';
-import {RoomsService} from './rooms.service';
+import {DeviceService} from '../services/device.service';
+import {RoomsService} from '../services/rooms.service';
 import {Room} from '../models/Room';
 
 

@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs';
-
+import { User } from '../models/User';
 
 @Injectable()
 export class AppService {
 
+  user: User;
+
   authenticated = false;
 
   constructor(private http: HttpClient) {
+
+    this.user = new User('Telis', true);
+  }
+
+  getUser(): User {
+    return this.user;
   }
 
   authenticate(credentials, callback) {

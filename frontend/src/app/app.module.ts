@@ -5,18 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { DevicesComponent } from './devices/devices.component';
+import { DevicesComponent } from './components/devices/devices.component';
 
 import { RoomsComponent } from './rooms/rooms.component';
-import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { RoomComponent } from './room/room.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MenuComponent } from './menu/menu.component';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import {FormsModule} from '@angular/forms';
-import {AppService} from './app.service';
+import {AppService} from './services/app.service';
 
 @NgModule({
   declarations: [
