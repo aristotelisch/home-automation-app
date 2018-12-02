@@ -1,31 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './devices/devices.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HomePageComponent } from './home-page/home-page.component';
-import { KitchenDevicesComponent } from './kitchen-devices/kitchen-devices.component';
+
+import { RoomsComponent } from './rooms/rooms.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
-import { LivingroomDevicesComponent } from './livingroom-devices/livingroom-devices.component';
-import { BedroomDevicesComponent } from './bedroom-devices/bedroom-devices.component';
-import { BathroomDevicesComponent } from './bathroom-devices/bathroom-devices.component';
-import { GarageDevicesComponent } from './garage-devices/garage-devices.component';
-import { YardDevicesComponent } from './yard-devices/yard-devices.component';
+import { RoomComponent } from './room/room.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DevicesComponent,
-    HomePageComponent,
-    KitchenDevicesComponent,
     AuthenticateComponent,
-    LivingroomDevicesComponent,
-    BedroomDevicesComponent,
-    BathroomDevicesComponent,
-    GarageDevicesComponent,
-    YardDevicesComponent
+    DashboardComponent,
+    DevicesComponent,
+
+    // DeviceComponent TODO
+    RoomsComponent,
+    RoomComponent
+    
   ],
   imports: [
     BrowserModule,
