@@ -1,0 +1,110 @@
+/* Container needed to position the button. Adjust the width as needed */
+.container {
+    position: relative;
+    width: 100%;
+  } 
+  
+  /* Make the image responsive */
+   .container img {
+    width: 100%;
+    height: auto;
+  } 
+  
+  /* Style the button and place it in the middle of the container/image */
+  .container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .container .btn:hover {
+    background-color: black;
+  } 
+
+
+  #livingroom .livingroom-item {
+    right: 0;
+    margin: 0 0 15px;
+  }
+  
+  #livingroom .livingroom-item .livingroom-link {
+    position: relative;
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  
+  #livingroom .livingroom-item .livingroom-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all ease 0.5s;
+    transition: all ease 0.5s;
+    opacity: 0;
+    background:#333;
+  }
+  
+  #livingroom .livingroom-item {
+    opacity: 1;
+  }
+  
+  #livingroom .livingroom-item .livingroom-link-content {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 20px;
+    margin-top: -12px;
+    text-align: center;
+    color: white;
+  }
+  
+  #livingroom .livingroom-item .livingroom-link-content i {
+    margin-top: -12px;
+  }
+  
+  #livingroom .livingroom-item .livingroom-link-content h3,
+  #livingroom .livingroom-item .livingroom-link-content h4 {
+    margin: 0;
+  }
+  
+  #livingroom .livingroom-item .livingroom-caption {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+    background-color: rgb(231, 231, 231);
+    /* background-color: #fff; */
+  }
+  
+  #livingroom .livingroom-item .livingroom-caption h4 {
+    margin: 0;
+    text-transform: none;
+  }
+  
+  #livingroom .livingroom-item .livingroom-caption p {
+    font-size: 16px;
+    font-style: italic;
+    margin: 0;
+    font-family: 'Droid Serif', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+  
+  #livingroom * {
+    z-index: 2;
+  }
+  
+  @media (min-width: 767px) {
+    #livingroom .livingroom-item {
+      margin: 0 0 30px;
+    }
+  }
