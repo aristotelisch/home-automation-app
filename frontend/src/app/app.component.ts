@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppService } from './app.service';
+import { AppService } from './services/app.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,14 +12,16 @@ import { catchError } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'Home Automation App';
+  authenticated = false;
 
   constructor(private app: AppService, private http: HttpClient, private router: Router) {
-    this.app.authenticate(undefined, undefined);
+    // this.app.authenticate(undefined, undefined);
   }
+
   logout() {
     this.http.post('logout', {}).subscribe(() => {
       this.app.authenticated = false;
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/authenticate');
     });
   }
 
