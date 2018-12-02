@@ -1,14 +1,32 @@
-<div class="col-md-4 col-sm-6 home-item">
-  <a class="home-link" data-toggle="modal" href="/home/livingroom">
-    <div class="home-hover">
-      <div class="home-hover-content">
-        <i class="fas fa-plus fa-3x"></i>
-      </div>
+<div class="bg-light" id="room">
+    <div class="container-fluid">
+        <div class="col-md-4 col-sm-6 room-item">
+           <a class="room-link" data-toggle="modal" href="/rooms/devices"> <!-- -->
+             <div class="room-hover">
+                <div class="room-hover-content">
+                   <i class="fas fa-plus fa-3x"></i>
+                </div>
+             </div>
+             <img class="img-fluid" src="assets/img/rooms/{{room.image}}" alt="Responsive image">
+           </a>
+           <div class="room-caption">
+             <h5>{{room.name}}</h5>
+             <!-- <p class="text-muted text-center">Devices</p> -->
+           </div>
+           <div class="room-text">
+              <ul>
+             List of Devices:
+               <li></li>
+               <!-- <div class="devices">
+               <div class="device" *ngFor="let device of devices" style="width:100%">
+                    {{device.id}},
+                    {{device.name}},
+                    {{device.status}},
+                    {{device.type}},
+                    {{device.information}}
+                </div> </div> -->
+             </ul>
+           </div>
+        </div>
     </div>
-    <img class="img-fluid" src="assets/img/rooms/{{room.image}}" alt="">
-  </a>
-  <div class="home-caption">
-    <h4>{{room.name}}</h4>
-    <p class="text-muted"></p>
-  </div>
 </div>

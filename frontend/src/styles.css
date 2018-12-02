@@ -4,3 +4,11 @@
 body {
     /*background-color: rgba(46, 46, 46, 0.425);*/
   }
+
+.container { 
+    width: 100%;
+}
+
+/* .row{
+    width: 25%;
+} */
