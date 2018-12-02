@@ -13,11 +13,21 @@
     </table>
     <table class="device" *ngFor="let device of devices" style="width:100%">
         <tr>
-          <td>{{device.id}}</td> 
-          <td>{{device.name}}</td>
-          <td>{{device.status}}</td>
-          <td>{{device.type}}</td>
-          <td>{{device.information}}</td> 
+          <td>
+            <input [(ngModel)]="device.id" placeholder="{{device.id}}"> <!-- *** this column should be removed *** -->
+          </td> 
+          <td>
+            <input [(ngModel)]="device.name" placeholder="{{device.name}}">
+          </td>
+          <td>
+            <input [(ngModel)]="device.status" placeholder="{{device.status}}">
+          </td>
+          <td>
+            <input [(ngModel)]="device.type" placeholder="{{device.type}}">
+          </td>
+          <td>
+            <input [(ngModel)]="device.information" placeholder="{{device.information}}">
+          </td> 
           
           <p><button (click)="removeDevice(device)"> Delete </button> <!--  -->
           <button (click)="updateDevice(device)"> Update </button></p> <!--  -->

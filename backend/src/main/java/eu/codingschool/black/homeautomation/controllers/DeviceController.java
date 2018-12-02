@@ -37,24 +37,54 @@ public class DeviceController {
 //                .collect(Collectors.toList());
 //    }
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/devices/add")
+    @PostMapping("/devices")
     /**
-     * If admin enters invalid input (string instead of int, int instead of boolean, etc), program crashes.
-     * 1st choice: Implementing a better parsing method, failproof against bad data.
-     * 2nd choice: If we return null object, frontend should display error message of invalid argument.
+     * Implemented direct mapping to Device bellow.
+     * Have not implemented any kind of checking on the Device input. ***
      */
-    public Device addDevice(@RequestBody String payload){
+    /*
+    public Collection<Device> addDevice(@RequestBody String payload){
         System.out.println(payload);
         try {
             Device device = new ObjectMapper().readValue(payload, Device.class);
             System.out.println(device);
-            return service.save(device);
+            //return service.save(device);
+            service.save(device);
+            return StreamSupport.stream(service.findAll().spliterator(), false)
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
-            // System.exit(-33);
         }
-        // return null;
+    */
+
+    public Collection<Device> addDevice(@RequestBody Device device){
+        service.save(device);
+        return StreamSupport.stream(service.findAll().spliterator(), false)
+                    .collect(Collectors.toList());
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/devices/{id}")
+    //public String removeDevice(@PathVariable("id") long id){
+    public Collection<Device> removeDevice(@PathVariable("id") long id){
+        service.deleteById(id);
+        //return "The device with Id: " + id + ", has been deleted."; // check if actually deleted by trying to find it afterwards ???
+        return StreamSupport.stream(service.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * The PutController is a duplicate of the PostController.
+     * Only in case we need to differentiate them in the future.
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/devices")
+    public Collection<Device> updateDevice(@RequestBody Device device){
+        System.out.println(device);
+        service.save(device);
+        return StreamSupport.stream(service.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 }
 

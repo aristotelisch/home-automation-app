@@ -7,4 +7,5 @@ import java.util.List;
 public interface DeviceService {
     List<Device> findAll();
     Device save(Device device);
+    void deleteById(Long id);
 }

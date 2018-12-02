@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Device} from '../../models/Device';
 //import {mock_devices} from '../models/mock-devices';
 import {DeviceService} from '../../services/device.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-devices',
@@ -22,21 +23,24 @@ export class DevicesComponent implements OnInit {
     this.deviceService.getDevices().subscribe(value => this.devices = value);
   }
 
-  
+  /** 
+   * All BackEnd Controllers return the full list of Devices, so as to refresh the admin's screen.
+   */
+
   addDevice(id: number, name: string, status: boolean, type: string, information: string) { 
     let device = new Device(id, name, status, type, information); 
+    this.deviceService.addDevice(device).subscribe(value => this.devices = value);   // Remove device.id from UI
     //this.devices.push(device); 
-    this.deviceService.addDevice(device).subscribe(value => device = value);   // workInProgress ***
-    this.devices.push(device); 
-    console.log("service.addDevice returned");
-    console.log(device);
   }
-  removeDevice() {  
-    //let index = this.devices.indexOf(device); 
-    //this.devices.splice(index,1);
+
+  removeDevice(device: Device) {  
+    this.deviceService.removeDevice(device.id).subscribe(value => this.devices = value);   // refresh page after any request ***
+    return; // maybe inform someone the device has been deleted ???
   }
-  updateDevice() {  
-    //
+  
+  updateDevice(device: Device) {  
+    this.deviceService.updateDevice(device).subscribe(value => this.devices = value);
+    return;
   }
 
 }
