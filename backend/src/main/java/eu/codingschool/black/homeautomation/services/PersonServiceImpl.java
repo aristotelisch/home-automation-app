@@ -20,9 +20,9 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     PersonRoleRepository personRoleRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
+//
 
     @Override
     public Person findByPersonname(String personname) {

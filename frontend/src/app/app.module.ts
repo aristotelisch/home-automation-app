@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './devices/devices.component';
@@ -15,6 +16,7 @@ import { BathroomDevicesComponent } from './bathroom-devices/bathroom-devices.co
 import { GarageDevicesComponent } from './garage-devices/garage-devices.component';
 import { YardDevicesComponent } from './yard-devices/yard-devices.component';
 import { AdminTablesComponent } from './admin-tables/admin-tables.component';
+//import {BrowserAnimationsModule}
 
 @NgModule({
   declarations: [

@@ -1,4 +1,4 @@
-package eu.codingschool.black.homeautomation.app
+package eu.codingschool.black.homeautomation.app;
 
 import eu.codingschool.black.homeautomation.entities.Person;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +16,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = "eeu.codingschool.black.homeautomation")
+@ComponentScan(basePackages = "eeu.codingschool.black.homeautomation.jpa")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
- //   private PersonDetailsService personDetailsService;
+    private UserDetailsService personDetailsService;
 
     @Bean(name="passwordEncoder")
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -56,6 +56,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(personDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 }
