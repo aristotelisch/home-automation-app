@@ -1,44 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './devices/devices.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HomePageComponent } from './home-page/home-page.component';
-import { KitchenDevicesComponent } from './kitchen-devices/kitchen-devices.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { AdminPageComponent } from './admin-page/admin-page.component';
-import { LivingroomDevicesComponent } from './livingroom-devices/livingroom-devices.component';
-import { BedroomDevicesComponent } from './bedroom-devices/bedroom-devices.component';
-import { BathroomDevicesComponent } from './bathroom-devices/bathroom-devices.component';
-import { GarageDevicesComponent } from './garage-devices/garage-devices.component';
-import { YardDevicesComponent } from './yard-devices/yard-devices.component';
-import { AdminTablesComponent } from './admin-tables/admin-tables.component';
-//import {BrowserAnimationsModule}
+import { DevicesComponent } from './components/devices/devices.component';
+import { RoomsComponent } from './rooms/rooms.component';
+import { AuthenticateComponent } from './components/authenticate/authenticate.component';
+import { RoomComponent } from './room/room.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import {FormsModule} from '@angular/forms';
+import {AppService} from './services/app.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthenticateComponent,
+    DashboardComponent,
     DevicesComponent,
-    HomePageComponent,
-    KitchenDevicesComponent,
-    LoginPageComponent,
-    AdminPageComponent,
-    LivingroomDevicesComponent,
-    BedroomDevicesComponent,
-    BathroomDevicesComponent,
-    GarageDevicesComponent,
-    YardDevicesComponent,
-    AdminTablesComponent
+
+    // DeviceComponent TODO
+    RoomsComponent,
+    RoomComponent,
+    MenuComponent,
+    FooterComponent,
+    HeaderComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
