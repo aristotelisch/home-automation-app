@@ -31,11 +31,11 @@ public class Person {
     }
 
 
-    public long getPersonid() {
+    public long getId() {
         return personid;
     }
 
-    public void setPersonid(long personid) {
+    public void setId(long id) {
         this.personid = personid;
     }
 
@@ -43,16 +43,8 @@ public class Person {
         return personname;
     }
 
-    public void setPersonname(String personname) {
+    public void setPersonname(String name) {
         this.personname = personname;
-    }
-
-    public Set<Device> getDevice() {
-        return device;
-    }
-
-    public void setDevice(Set<Device> device) {
-        this.device = device;
     }
 
     public String getSurname() {

@@ -36,6 +36,7 @@ public class DeviceController {
 //                StreamSupport.stream(Collection.add(service.save(device)).spliterator(), false)
 //                .collect(Collectors.toList());
 //    }
+  
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/devices")
     /**
@@ -44,6 +45,7 @@ public class DeviceController {
      */
     /*
     public Collection<Device> addDevice(@RequestBody String payload){
+
         System.out.println(payload);
         try {
             Device device = new ObjectMapper().readValue(payload, Device.class);
