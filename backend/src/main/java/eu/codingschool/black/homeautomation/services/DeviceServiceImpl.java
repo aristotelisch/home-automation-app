@@ -17,4 +17,6 @@ public class DeviceServiceImpl implements DeviceService {
     public List<Device> findAll(){return repository.findAll();}
 
     public Device save(Device device){return repository.save(device);}
+
+    public void deleteById(Long id){repository.deleteById(id);}
 }
