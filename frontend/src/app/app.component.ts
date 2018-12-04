@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { AppService } from './services/app.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +11,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'Home Automation App';
+  authenticated = false;
+
+  constructor(private app: AppService, private http: HttpClient, private router: Router) {
+    // this.app.authenticate(undefined, undefined);
+  }
+
+  logout() {
+    this.http.post('logout', {}).subscribe(() => {
+      this.app.authenticated = false;
+      this.router.navigateByUrl('/authenticate');
+    });
+  }
+
 }

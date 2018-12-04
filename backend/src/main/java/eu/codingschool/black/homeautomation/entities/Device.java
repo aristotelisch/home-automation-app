@@ -16,6 +16,20 @@ public class Device {
   @JoinColumn(name = "room")
   private Room room;
 
+  public Device() {
+
+  }
+
+  public Device (String devicename, String type, boolean status, String information) {
+    this.devicename = devicename;
+    this.type = type;
+    this.status = status;
+    this.information = information;
+  }
+
+  public Device (String devicename, String type, boolean status, String information, Room room) {
+    this(devicename, type, status, information);
+  }
 
 
   public long getId () {

@@ -1,0 +1,48 @@
+<br>
+<p> Devices' Table: </p>
+
+<div class="devices">
+    <table class="device" style="width:100%">
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>status</th>
+          <th>type</th>
+          <th>information</th>
+        </tr>
+    </table>
+    <table class="device" *ngFor="let device of devices" style="width:100%">
+        <tr>
+          <td>
+            <input [(ngModel)]="device.id" placeholder="{{device.id}}"> <!-- *** this column should be removed *** -->
+          </td> 
+          <td>
+            <input [(ngModel)]="device.name" placeholder="{{device.name}}">
+          </td>
+          <td>
+            <input [(ngModel)]="device.status" placeholder="{{device.status}}">
+          </td>
+          <td>
+            <input [(ngModel)]="device.type" placeholder="{{device.type}}">
+          </td>
+          <td>
+            <input [(ngModel)]="device.information" placeholder="{{device.information}}">
+          </td> 
+          
+          <p><button (click)="removeDevice(device)"> Delete </button> <!--  -->
+          <button (click)="updateDevice(device)"> Update </button></p> <!--  -->
+
+       </tr>
+    </table> 
+ 
+    <br>
+    <input #id placeholder="id" /> 
+    <input #name placeholder="name" /> 
+    <input #status placeholder="status" /> 
+    <input #type placeholder="type" />
+    <input #information placeholder="information" />
+
+    <button (click)="addDevice(id.value,name.value,status.value,type.value,information.value)"> Add </button> <!--  -->
+ 
+
+</div>
