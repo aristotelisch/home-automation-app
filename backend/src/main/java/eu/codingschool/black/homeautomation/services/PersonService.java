@@ -12,5 +12,6 @@ public interface PersonService {
     Person findByPersonid(long id);
     List<Person> findAll();
     List<Person> findByPersonrole(PersonRole role);
+    void deleteById(long id);
 
 }
