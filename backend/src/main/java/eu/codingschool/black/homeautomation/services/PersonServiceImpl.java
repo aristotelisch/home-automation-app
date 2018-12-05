@@ -2,7 +2,7 @@ package eu.codingschool.black.homeautomation.services;
 
 import java.util.List;
 import eu.codingschool.black.homeautomation.entities.PersonRole;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.repositories.PersonRepository;
 import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
@@ -20,8 +20,8 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     PersonRoleRepository personRoleRepository;
 
-//    @Autowired
-//    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     @Override
@@ -58,8 +58,8 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.findByPersonrole(role);
     }
 
-    @Autowired
-    private PersonRepository repository;
+    @Override
+    public void deleteById(long id) {personRepository.deleteById(id);}
 
 
 }

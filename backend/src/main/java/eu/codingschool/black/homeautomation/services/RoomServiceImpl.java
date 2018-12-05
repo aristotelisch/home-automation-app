@@ -20,4 +20,7 @@ public class RoomServiceImpl implements RoomService{
     public Room save (Room room) {
         return repository.save (room);
     }
+
+    @Override
+    public void deleteById (long id) {repository.deleteById(id); }
 }

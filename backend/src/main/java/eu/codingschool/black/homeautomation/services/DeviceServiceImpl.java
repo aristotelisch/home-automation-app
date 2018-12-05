@@ -18,5 +18,5 @@ public class DeviceServiceImpl implements DeviceService {
 
     public Device save(Device device){return repository.save(device);}
 
-    public void deleteById(Long id){repository.deleteById(id);}
+    public void deleteById(long id){repository.deleteById(id);}
 }
