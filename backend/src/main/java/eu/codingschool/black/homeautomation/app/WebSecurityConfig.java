@@ -16,7 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = "eeu.codingschool.black.homeautomation.jpa")
+@ComponentScan(basePackages = "eu.codingschool.black.homeautomation.jpa")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
@@ -35,14 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.
                 authorizeRequests()
-                .antMatchers("/", "/login", "/hello", "/registration").permitAll()
+                .antMatchers("/", "/login", "/dashboard", "/devices").permitAll()
                 .antMatchers("/css/**", "/img/**", "/js/**", "/scss/**", "/vendor/**").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
                 .authenticated()
                 .and()
                 .csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/dashboard")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .and()
