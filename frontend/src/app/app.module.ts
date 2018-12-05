@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-// import { DevicesComponent } from './devices/devices.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
