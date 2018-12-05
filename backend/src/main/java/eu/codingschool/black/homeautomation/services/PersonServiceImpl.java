@@ -7,6 +7,7 @@ import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.repositories.PersonRepository;
 import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -20,8 +21,8 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     PersonRoleRepository personRoleRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     @Override
