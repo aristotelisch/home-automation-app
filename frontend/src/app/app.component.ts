@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',

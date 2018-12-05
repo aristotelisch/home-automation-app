@@ -78,7 +78,4 @@ public class Person {
     public void setPersonrole(PersonRole personrole) {
         this.personrole = personrole;
     }
-
-
-
 }

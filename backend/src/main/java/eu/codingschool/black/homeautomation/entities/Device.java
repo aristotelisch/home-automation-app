@@ -12,12 +12,12 @@ public class Device {
   private String type;
   private boolean status;
   private String information;
+
   @ManyToOne
   @JoinColumn(name = "room")
   private Room room;
 
   public Device() {
-
   }
 
   public Device (String devicename, String type, boolean status, String information) {
@@ -29,8 +29,8 @@ public class Device {
 
   public Device (String devicename, String type, boolean status, String information, Room room) {
     this(devicename, type, status, information);
+    this.room = room;
   }
-
 
   public long getId () {
     return deviceid;
