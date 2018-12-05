@@ -15,26 +15,24 @@ import java.util.stream.StreamSupport;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonController {
 
     @Autowired
     private PersonService service;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/persons")
     public Collection<Person> getPersons() {
         return StreamSupport.stream(service.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
 
-    @CrossOrigin(value = "http://localhost:4200")
     @RequestMapping("/login")
     public boolean login(@RequestBody Person user) {
-        return user.getEmail ().equals("user@example.com") && user.getPassword().equals("password");
+        return user.getUserName ().equals("user") && user.getPassword().equals("password");
     }
 
     @RequestMapping("/user")
-    @CrossOrigin(value = "http://localhost:4200")
     public Principal user(HttpServletRequest request) {
         String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
         return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];

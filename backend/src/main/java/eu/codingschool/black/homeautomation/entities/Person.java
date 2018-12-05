@@ -1,6 +1,5 @@
 package eu.codingschool.black.homeautomation.entities;
 
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,18 +10,47 @@ public class Person {
     @GeneratedValue
     private long personid;
     private String personname;
+
+    public long getPersonid () {
+        return personid;
+    }
+
+    public void setPersonid (long personid) {
+        this.personid = personid;
+    }
+
+    public String getUserName () {
+        return userName;
+    }
+
+    public void setUserName (String userName) {
+        this.userName = userName;
+    }
+
+    public Set<Device> getDevice () {
+        return device;
+    }
+
+    public void setDevice (Set<Device> device) {
+        this.device = device;
+    }
+
+    private String userName;
     private String surname;
     private String email;
     private String password;
+
     @ManyToOne
     @JoinColumn(name = "personrole")
     protected PersonRole personrole;
+
     @ManyToMany
     @JoinTable(name = "persondevice", joinColumns = @JoinColumn(name = "personid", referencedColumnName = "personid"), inverseJoinColumns = @JoinColumn(name = "deviceid", referencedColumnName = "deviceid"))
     private Set<Device> device;
 
-    public Person(long personid, String personname, String surname, String email, String password, PersonRole personrole) {
-        this.personid = personid;
+    public Person() {}
+
+    public Person(String personname, String surname, String email, String password, PersonRole personrole) {
         this.personname = personname;
         this.surname = surname;
         this.email = email;
@@ -30,6 +58,10 @@ public class Person {
         this.personrole = personrole;
     }
 
+    public Person(long personid, String personname, String surname, String email, String password, PersonRole personrole) {
+        this(personname, surname, email, password, personrole);
+        this.personid = personid;
+    }
 
     public long getId() {
         return personid;

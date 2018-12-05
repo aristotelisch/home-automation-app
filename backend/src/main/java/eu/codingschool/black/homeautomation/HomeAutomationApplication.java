@@ -1,10 +1,12 @@
 package eu.codingschool.black.homeautomation;
 
 import eu.codingschool.black.homeautomation.entities.Device;
+import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.entities.Room;
 import eu.codingschool.black.homeautomation.repositories.DeviceRepository;
 import eu.codingschool.black.homeautomation.services.DeviceService;
 import eu.codingschool.black.homeautomation.services.RoomService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
@@ -29,6 +31,8 @@ public class HomeAutomationApplication implements CommandLineRunner {
 
 	@Override
 	public void run (String... args) throws Exception {
+
+		Person simpleUser = new Person();
 
 	  Room lRoom1 = new Room ("Living Room", "living_room.jpg");
 		roomService.save (lRoom1);

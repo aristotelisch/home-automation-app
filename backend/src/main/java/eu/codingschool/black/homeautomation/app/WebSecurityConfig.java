@@ -19,20 +19,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth
             .inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
-            .withUser("user@example.com")
-            .password("password")
+            .withUser("user")
+            .password("password!")
             .roles("USER");
   }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable()
-            .authorizeRequests()
-            .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-            .antMatchers("/login").permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .httpBasic();
+    http.csrf().disable();
+
+    http.authorizeRequests()
+          .antMatchers (HttpMethod.OPTIONS, "/**").permitAll ()
+          .antMatchers ("/login").permitAll ()
+          .anyRequest().authenticated()
+        .and()
+          .httpBasic();
   }
 }
