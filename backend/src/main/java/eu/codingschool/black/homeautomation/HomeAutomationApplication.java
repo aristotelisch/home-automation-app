@@ -44,6 +44,8 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		roomService.findAll ().forEach (room -> System.out.println (room.getName ()));
 		deviceService.findAll ().forEach (device -> System.out.println (device.getName ()));
 	}
+
+
 }
 
 
