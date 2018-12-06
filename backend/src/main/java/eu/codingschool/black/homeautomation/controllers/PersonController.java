@@ -36,7 +36,8 @@ public class PersonController {
 
     @RequestMapping("/login")
     public boolean login(@RequestBody Person user) {
-        return user.getUserName ().equals("user") && user.getPassword().equals("password");
+        return user.getUserName ().equals("user") && user.getPassword().equals("password") ||
+                user.getUserName ().equals("admin") && user.getPassword().equals("password");
     }
 
     @PostMapping("/register")

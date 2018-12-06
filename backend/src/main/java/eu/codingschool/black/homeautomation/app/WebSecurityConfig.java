@@ -19,9 +19,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth
             .inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
-            .withUser("user")
-            .password("password")
-            .roles("USER");
+              .withUser("user")
+              .password("password")
+              .roles("USER")
+            .and()
+              .withUser("admin")
+              .password("password")
+//              .credentialsExpired(true)
+//              .accountExpired(true)
+//              .accountLocked(true)
+//              .authorities("WRITE_PRIVILEGES", "READ_PRIVILEGES")
+              .roles("ADMIN");
+
   }
 
   @Override
