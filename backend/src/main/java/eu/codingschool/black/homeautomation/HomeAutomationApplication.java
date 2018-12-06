@@ -30,7 +30,7 @@ public class HomeAutomationApplication implements CommandLineRunner {
 	@Override
 	public void run (String... args) throws Exception {
 
-	  Room lRoom1 = new Room ("Living Room", "living_room.jpg");
+	  	Room lRoom1 = new Room ("Living Room", "living_room.jpg");
 		roomService.save (lRoom1);
 		Room lRoom2 = new Room ("Bedroom", "bedroom.jpg");
 		roomService.save (lRoom2);

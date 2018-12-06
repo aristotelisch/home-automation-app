@@ -8,7 +8,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class DeviceService {
+
   private devicesUrl = 'http://localhost:8080/devices';
+
   private temp: Observable<Device>;
 
   constructor(private http: HttpClient) { }
