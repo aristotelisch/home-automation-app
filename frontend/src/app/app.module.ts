@@ -15,6 +15,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import {FormsModule} from '@angular/forms';
 import {AppService} from './services/app.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {MessageService} from 'primeng/api';
 
 
 @NgModule({
@@ -23,7 +27,6 @@ import {AppService} from './services/app.service';
     AuthenticateComponent,
     DashboardComponent,
     DevicesComponent,
-
     // DeviceComponent TODO
     RoomsComponent,
     RoomComponent,
@@ -34,11 +37,14 @@ import {AppService} from './services/app.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MessagesModule,
+    MessageModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [AppService],
+  providers: [AppService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
