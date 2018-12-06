@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Device} from '../../models/Device';
+import {Room} from '../../models/Room';
 //import {mock_devices} from '../models/mock-devices';
 import {DeviceService} from '../../services/device.service';
 import { Observable } from 'rxjs';
+import { RoomsService } from 'src/app/services/rooms.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-devices',
@@ -11,16 +14,30 @@ import { Observable } from 'rxjs';
 })
 
 export class DevicesComponent implements OnInit {
-  devices: Device[] = [];
 
-  constructor(private deviceService: DeviceService) { }
+  devices: Device[] = [];
+  
+  rooms: Room[] = [];
+  selectedRoom: any;
+
+  constructor(private deviceService: DeviceService, private roomService: RoomsService) { }
 
   ngOnInit() {
     this.getDevices();
+    this.getRooms();
+  }
+
+  onRoomSelect(event){
+    console.log(this.selectedRoom);
+    console.log(this.selectedRoom.name);
   }
   
   getDevices(): void {
     this.deviceService.getDevices().subscribe(value => this.devices = value);
+  }
+
+  getRooms(): void {
+    this.roomService.getRooms().subscribe(value => this.rooms = value);
   }
 
   /** 
@@ -35,6 +52,7 @@ export class DevicesComponent implements OnInit {
 
   removeDevice(device: Device) {  
     this.deviceService.removeDevice(device.id).subscribe(value => this.devices = value);   // refresh page after any request ***
+    // console.log(this.rooms);
     return; // maybe inform someone the device has been deleted ???
   }
   
