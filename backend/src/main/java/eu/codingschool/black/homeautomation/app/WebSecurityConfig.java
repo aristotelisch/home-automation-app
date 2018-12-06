@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     auth
             .inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
             .withUser("user")
-            .password("password!")
+            .password("password")
             .roles("USER");
   }
 

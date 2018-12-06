@@ -1,9 +1,13 @@
 package eu.codingschool.black.homeautomation.controllers;
 
 import eu.codingschool.black.homeautomation.entities.Person;
+import eu.codingschool.black.homeautomation.entities.PersonRole;
 import eu.codingschool.black.homeautomation.repositories.PersonRepository;
+import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
 import eu.codingschool.black.homeautomation.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +23,14 @@ import java.util.stream.StreamSupport;
 public class PersonController {
 
     @Autowired
-    private PersonService service;
+    private PersonService personService;
+
+    @Autowired
+    private PersonRoleRepository personRoleRepository;
 
     @GetMapping("/persons")
     public Collection<Person> getPersons() {
-        return StreamSupport.stream(service.findAll().spliterator(), false)
+        return StreamSupport.stream(personService.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
 
@@ -32,9 +39,28 @@ public class PersonController {
         return user.getUserName ().equals("user") && user.getPassword().equals("password");
     }
 
+    @PostMapping("/register")
+    public boolean register(@RequestBody Person person) {
+        try {
+            if (person != null) {
+                PersonRole userRole = personRoleRepository.findByRolename ("USER");
+                person.setPersonrole (userRole);
+                personService.save (person);
+                return true;
+            }
+        } catch (NullPointerException ex) {
+            return false;
+        }
+        return false;
+    }
+
     @RequestMapping("/user")
     public Principal user(HttpServletRequest request) {
         String authToken = request.getHeader("Authorization").substring("Basic".length()).trim();
-        return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        // return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+        return authentication;
     }
 }

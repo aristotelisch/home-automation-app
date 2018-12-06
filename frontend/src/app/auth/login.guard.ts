@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import {AppService} from '../services/app.service';
 
@@ -8,12 +8,16 @@ import {AppService} from '../services/app.service';
 })
 export class LoginGuard implements CanActivate {
 
-  constructor(private appService: AppService) {
+  constructor(private appService: AppService, private router: Router) {
   }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.appService.getUser() && this.appService.getUser().isAdmin;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    console.log('Login guard runs now');
+    if (this.appService.authenticated) {
+      return true;
+    } else {
+      this.router.navigate(['/authenticate']);
+      return false;
+    }
   }
 }

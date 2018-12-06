@@ -3,22 +3,25 @@
   <!-- Login -->
   <div class="nk-block toggled" id="l-login">
     <div class="nk-form">
-      <div class="input-group">
+      <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div class="input-group"[ngClass]="{ 'has-error': f.submitted && !username.valid }">
         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
         <div class="nk-int-st">
-          <input type="text" class="form-control" placeholder="Username">
+          <input class="form-control" placeholder="Username"type="text" name="username" [(ngModel)]="model.username" #username="ngModel" required >
+
+          <div *ngIf="f.submitted && !username.valid">Username is required</div>
         </div>
       </div>
-      <div class="input-group mg-t-15">
+      <div class="input-group mg-t-15"[ngClass]="{ 'has-error': f.submitted && !password.valid }">
         <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-edit"></i></span>
         <div class="nk-int-st">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required class="form-control" placeholder="Password">
+          <div *ngIf="f.submitted && !password.valid">Password is required</div>
         </div>
       </div>
-      <div class="fm-checkbox">
-        <label><input type="checkbox" class="i-checks"> <i></i> Keep me signed in</label>
-      </div>
-      <a href="#l-register" data-ma-action="nk-login-switch" data-ma-block="#l-register" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></a>
+        <button [disabled]="loading">Login</button>
+      <!--<a href="#l-register" data-ma-action="nk-login-switch" data-ma-block="#l-register" class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></a>-->
+      </form>
     </div>
 
     <div class="nk-navigation nk-lg-ic">
