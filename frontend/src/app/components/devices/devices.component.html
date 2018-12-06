@@ -2,7 +2,7 @@
 <p> Devices' Table: </p>
 
 <div class="devices">
-    <table class="device" style="width:90%">
+    <table class="device" style="width:95%">
         <tr>
           <th>id</th>
           <th>name</th>
@@ -12,7 +12,7 @@
           <th>owning room</th>
         </tr>
     </table>
-    <table class="device" *ngFor="let device of devices" style="width:90%">
+    <table class="device" *ngFor="let device of devices" style="width:95%">
         <tr>
           <td>
             <input [(ngModel)]="device.id" placeholder="{{device.id}}"> <!-- *** this column should be removed *** -->
@@ -46,13 +46,13 @@
     <input #type placeholder="type" />
     <input #information placeholder="information" />
   
-    <select class="rooms" required [(ngModel)]="selectedRoom" (ngModelChange)='onRoomSelect($event)'>
+    <select class="rooms" required [(ngModel)]="selectedRoomId" (ngModelChange)='onRoomSelect($event)'>
       <option class="room" *ngFor='let room of rooms' [value]="room.id">{{room.name}}</option>
     </select>
     
 
 
-    <button (click)="addDevice(id.value,name.value,status.value,type.value,information.value)"> Add </button> <!--  -->
+    <button (click)="addDevice(id.value,name.value,status.value,type.value,information.value)"> Add </button> 
  
 
 </div>

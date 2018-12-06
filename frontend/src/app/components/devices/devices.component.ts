@@ -16,9 +16,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class DevicesComponent implements OnInit {
 
   devices: Device[] = [];
-  
   rooms: Room[] = [];
-  selectedRoom: any;
+  selectedRoomId: number;
 
   constructor(private deviceService: DeviceService, private roomService: RoomsService) { }
 
@@ -28,8 +27,7 @@ export class DevicesComponent implements OnInit {
   }
 
   onRoomSelect(event){
-    console.log(this.selectedRoom);
-    console.log(this.selectedRoom.name);
+    console.log(this.selectedRoomId);
   }
   
   getDevices(): void {
@@ -44,8 +42,11 @@ export class DevicesComponent implements OnInit {
    * All BackEnd Controllers return the full list of Devices, so as to refresh the admin's screen.
    */
 
+   /** 
+    * Unlike the device's attributes, we get roomId via selectedRoomId's double binding. 
+    */
   addDevice(id: number, name: string, status: boolean, type: string, information: string) { 
-    let device = new Device(id, name, status, type, information); 
+    let device = new Device(id, name, status, type, information, this.selectedRoomId); 
     this.deviceService.addDevice(device).subscribe(value => this.devices = value);   // Remove device.id from UI
     //this.devices.push(device); 
   }

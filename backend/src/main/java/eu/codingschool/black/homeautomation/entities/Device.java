@@ -13,6 +13,9 @@ public class Device {
   private boolean status;
   private String information;
 
+  @Transient
+  private long roomId;
+
   @ManyToOne
   @JoinColumn(name = "room")
   private Room room;
@@ -29,6 +32,11 @@ public class Device {
 
   public Device (String devicename, String type, boolean status, String information, Room room) {
     this(devicename, type, status, information);
+    this.room = room;
+  }
+
+  public Device (Device device, Room room){
+    this(device.devicename, device.type, device.status, device.information);
     this.room = room;
   }
 
@@ -70,6 +78,14 @@ public class Device {
 
   public void setInformation (String information) {
     this.information = information;
+  }
+
+  public long getRoomId() {
+    return roomId;
+  }
+
+  public void setRoomId(long roomId) {
+    this.roomId = roomId;
   }
 
   @Override
