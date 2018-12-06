@@ -3,6 +3,7 @@ import {AppService} from '../../services/app.service';
 import {HttpClient} from '@angular/common/http';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-authenticate',
@@ -18,7 +19,8 @@ export class AuthenticateComponent implements OnInit {
     private app: AppService,
     private http: HttpClient,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -41,9 +43,20 @@ export class AuthenticateComponent implements OnInit {
         this.router.navigate(['/dashboard']);
 
       } else {
-        alert('Authentication failed.');
+        this.addSingleMessagePopUp('error', 'Authentication Failed', isValid);
       }
     });
   }
 
+  addSingleMessagePopUp(severity, summary, detail) {
+    this.messageService.add({severity: severity, summary: summary, detail: detail});
+    setTimeout(() => {
+      console.log('hide');
+      this.clearMessagePopUp();
+    }, 3000);
+  }
+
+  clearMessagePopUp() {
+    this.messageService.clear();
+  }
 }

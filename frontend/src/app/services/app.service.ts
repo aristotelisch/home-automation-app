@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/User';
+import {Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class AppService {
@@ -11,8 +14,7 @@ export class AppService {
 
   authenticated = false;
 
-  constructor(private http: HttpClient) {
-    // this.user = new User('Telis', true);
+  constructor(private http: HttpClient, private router: Router, private messageService: MessageService) {
   }
 
   setToken (token: string) {
@@ -39,17 +41,22 @@ export class AppService {
 
     console.log(headers);
     this.http.post(this.userUrl, null, { headers: headers}).subscribe(response => {
-      console.log('inside authenticate method');
-      console.log(response);
-      console.log(response['authenticated'] === true);
       if (response['authenticated'] === true) {
         this.authenticated = true;
         this.saveAuthHeaders(headers);
-        console.log('this.authenticated is ', this.authenticated);
+        const authority = response['authorities'][0]['authority'];
+        let isAdmin = false;
+        if (authority === 'ROLE_USER') {
+          isAdmin = false;
+        } else if (authority === 'ROLE_ADMIN') {
+          isAdmin = true;
+        }
+
+        this.setUser(new User(response['name'], isAdmin));
+
       } else {
         this.authenticated = false;
       }
-      console.log(this.authenticated);
       return callback && callback();
     });
 
@@ -57,6 +64,16 @@ export class AppService {
 
   private saveAuthHeaders(headers: HttpHeaders) {
     this.authHeaders = headers;
+  }
+
+  logout() {
+      this.authenticated = false;
+      this.router.navigateByUrl('/authenticate');
+        this.messageService.add({severity: 'warn', summary: 'You have been logged out', detail: ''});
+        setTimeout(() => {
+          console.log('hide');
+          this.messageService.clear();
+        }, 3000);
   }
 
 }
