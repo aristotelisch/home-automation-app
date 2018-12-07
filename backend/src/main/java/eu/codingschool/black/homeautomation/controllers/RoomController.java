@@ -15,12 +15,12 @@ import java.util.stream.StreamSupport;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class RoomController {
 
     @Autowired
     private RoomService service;
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/rooms")
     public Collection<Room> getRooms() {
         return StreamSupport.stream(service.findAll().spliterator(), false)
@@ -32,7 +32,6 @@ public class RoomController {
      * Called by admin
      *
      */
-    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/rooms")          // temp url address ***
     public Collection<Room> addRoom(@RequestBody Room room){
         service.save(room);
@@ -40,7 +39,6 @@ public class RoomController {
                     .collect(Collectors.toList());
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/rooms/{id}")           // temp url address ***
     public Collection<Room> removeRoom(@PathVariable("id") long id){
         service.deleteById(id);
@@ -52,7 +50,6 @@ public class RoomController {
      * The PutController is a duplicate of the PostController.
      * Only in case we need to differentiate them in the future.
      */
-    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/rooms")
     public Collection<Room> updateRoom(@RequestBody Room room){
         service.save(room);

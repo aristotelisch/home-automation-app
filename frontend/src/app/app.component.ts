@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {User} from './models/User';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -11,17 +13,25 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Home Automation App';
+  logoutUrl = 'http://localhost:8080/logout';
   authenticated = false;
+  currentUser: User;
 
   constructor(private app: AppService, private http: HttpClient, private router: Router) {
-    // this.app.authenticate(undefined, undefined);
+
+    if (sessionStorage.getItem('token')) {
+      console.log('At AppComponent constructor');
+      console.log(sessionStorage.getItem('token'));
+      console.log( typeof sessionStorage.getItem('token'));
+      console.log(sessionStorage.getItem('token').length);
+      console.log('about to run authenticate function');
+      this.app.authenticate(undefined);
+    }
   }
 
-  logout() {
-    this.http.post('logout', {}).subscribe(() => {
-      this.app.authenticated = false;
-      this.router.navigateByUrl('/authenticate');
-    });
+  setCurrentuser() {
+    this.app.getUser();
   }
+
 
 }

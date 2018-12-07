@@ -1,5 +1,7 @@
 package eu.codingschool.black.homeautomation.entities;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,18 +13,49 @@ public class Person {
     @GeneratedValue
     private long personid;
     private String personname;
+
+    public long getPersonid () {
+        return personid;
+    }
+
+    public void setPersonid (long personid) {
+        this.personid = personid;
+    }
+
+    public String getUsername () {
+        return username;
+    }
+
+    public void setUsername (String username) {
+        this.username = username;
+    }
+
+    public Set<Device> getDevice () {
+        return device;
+    }
+
+    public void setDevice (Set<Device> device) {
+        this.device = device;
+    }
+
+    @Column(nullable = false, unique = true)
+    private String username;
     private String surname;
     private String email;
+
     private String password;
+
     @ManyToOne
     @JoinColumn(name = "personrole")
     protected PersonRole personrole;
+
     @ManyToMany
     @JoinTable(name = "persondevice", joinColumns = @JoinColumn(name = "personid", referencedColumnName = "personid"), inverseJoinColumns = @JoinColumn(name = "deviceid", referencedColumnName = "deviceid"))
     private Set<Device> device;
 
-    public Person(long personid, String personname, String surname, String email, String password, PersonRole personrole) {
-        this.personid = personid;
+    public Person() {}
+
+    public Person(String personname, String surname, String email, String password, PersonRole personrole) {
         this.personname = personname;
         this.surname = surname;
         this.email = email;
@@ -30,6 +63,10 @@ public class Person {
         this.personrole = personrole;
     }
 
+    public Person(long personid, String personname, String surname, String email, String password, PersonRole personrole) {
+        this(personname, surname, email, password, personrole);
+        this.personid = personid;
+    }
 
     public long getId() {
         return personid;
