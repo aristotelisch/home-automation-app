@@ -6,6 +6,7 @@ import {DeviceService} from '../../services/device.service';
 import { Observable } from 'rxjs';
 import { RoomsService } from 'src/app/services/rooms.service';
 import { forEach } from '@angular/router/src/utils/collection';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-devices',
@@ -19,14 +20,17 @@ export class DevicesComponent implements OnInit {
   rooms: Room[] = [];
   selectedRoomId: number;
 
-  constructor(private deviceService: DeviceService, private roomService: RoomsService) { }
+  constructor(private deviceService: DeviceService,
+              private roomService: RoomsService,
+              private messageService: MessageService
+  ) { }
 
   ngOnInit() {
     this.getDevices();
     this.getRooms();
   }
 
-  onRoomSelect(){
+  onRoomSelect() {
     console.log(this.selectedRoomId);
   }
 
@@ -36,7 +40,7 @@ export class DevicesComponent implements OnInit {
     //device.setRoomId(id);
     //console.log(id);
   }
-  
+
   getDevices(): void {
     this.deviceService.getDevices().subscribe(value => this.devices = value);
   }
@@ -45,28 +49,42 @@ export class DevicesComponent implements OnInit {
     this.roomService.getRooms().subscribe(value => this.rooms = value);
   }
 
-  /** 
+  /**
    * All BackEnd Controllers return the full list of Devices, so as to refresh the admin's screen.
    */
 
-   /** 
-    * Unlike the device's attributes, we get roomId via selectedRoomId's double binding. 
-    */
-  addDevice(name: string, status: boolean, type: string, information: string) { 
-    let device = new Device(-1, name, status, type, information, this.selectedRoomId); 
+  /**
+   * Unlike the device's attributes, we get roomId via selectedRoomId's double binding.
+   */
+  addDevice(name: string, status: boolean, type: string, information: string) {
+    const device = new Device(-1, name, status, type, information, this.selectedRoomId);
     this.deviceService.addDevice(device).subscribe(value => this.devices = value);   // Remove device.id from UI
     //this.devices.push(device); 
   }
 
-  removeDevice(device: Device) {  
+  removeDevice(device: Device) {
     this.deviceService.removeDevice(device.id).subscribe(value => this.devices = value);   // refresh page after any request ***
     // console.log(this.rooms);
-    return; 
-  }
-  
-  updateDevice(device: Device) {  
-    this.deviceService.updateDevice(device).subscribe(value => this.devices = value);
     return;
+  }
+
+  updateDevice(device: Device) {
+    this.deviceService.updateDevice(device).subscribe(value => this.devices = value);
+    this.addSingleMessagePopUp('info', 'Device updated', '');
+    return;
+  }
+
+
+  addSingleMessagePopUp(severity, summary, detail) {
+    this.messageService.add({severity: severity, summary: summary, detail: detail});
+    setTimeout(() => {
+      console.log('hide');
+      this.clearMessagePopUp();
+    }, 3000);
+  }
+
+  clearMessagePopUp() {
+    this.messageService.clear();
   }
 
 }

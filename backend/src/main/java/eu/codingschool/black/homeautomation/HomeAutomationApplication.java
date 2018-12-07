@@ -2,7 +2,9 @@ package eu.codingschool.black.homeautomation;
 
 import eu.codingschool.black.homeautomation.entities.Device;
 import eu.codingschool.black.homeautomation.entities.Person;
+import eu.codingschool.black.homeautomation.entities.PersonRole;
 import eu.codingschool.black.homeautomation.entities.Room;
+import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
 import eu.codingschool.black.homeautomation.services.DeviceService;
 import eu.codingschool.black.homeautomation.services.PersonService;
 import eu.codingschool.black.homeautomation.services.RoomService;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -27,6 +31,9 @@ public class HomeAutomationApplication implements CommandLineRunner {
 	PersonService personService;
 
 	@Autowired
+	PersonRoleRepository personRoleRepository;
+
+	@Autowired
 	PasswordEncoder passwordEncoder;
 
 	public static void main (String[] args) {
@@ -36,16 +43,26 @@ public class HomeAutomationApplication implements CommandLineRunner {
 	@Override
 	public void run (String... args) throws Exception {
 
-
+		PersonRole userRole = new PersonRole ("USER");
+		PersonRole adminRole = new PersonRole ("ADMIN");
+		personRoleRepository.save(userRole);
+		personRoleRepository.save(adminRole);
 
 		Person simpleUser = new Person();
-		simpleUser.setUsername ("aristotelis");
+		simpleUser.setUsername ("user");
 		simpleUser.setPassword ("password");
+		simpleUser.setPersonrole (userRole);
 		personService.save (simpleUser);
 
-	  Room lRoom1 = new Room ("Living Room", "living_room.jpg");
+		Person adminUser = new Person();
+		adminUser.setUsername ("admin");
+		adminUser.setPassword ("password");
+		adminUser.setPersonrole (adminRole);
+		personService.save (adminUser);
 
+	  Room lRoom1 = new Room ("Living Room", "living_room.jpg");
 		roomService.save (lRoom1);
+
 		Room lRoom2 = new Room ("Bedroom", "bedroom.jpg");
 		roomService.save (lRoom2);
 

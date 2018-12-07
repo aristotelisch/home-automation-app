@@ -1,23 +1,23 @@
-table, th, td{
-    table-layout: fixed ;
-    width: 100% ;
-    border: 1px solid black;
-    border-spacing: 5px;
-    border-collapse: collapse;
-}
-td {
-    width: 25% ;
-} 
-th, td {
-    text-align: center;
-}
+/*table, th, td{*/
+    /*table-layout: fixed ;*/
+    /*width: 100% ;*/
+    /*border: 1px solid black;*/
+    /*border-spacing: 5px;*/
+    /*border-collapse: collapse;*/
+/*}*/
+/*td {*/
+    /*width: 25% ;*/
+/*} */
+/*th, td {*/
+    /*text-align: center;*/
+/*}*/
 
-input::placeholder {
-    color: black;
-    padding: 10px;
-    width: 100%;
-}
-input:placeholder-shown {
-    /*border: 2px solid silver;*/
-    width: 20%;
-}
+/*input::placeholder {*/
+    /*color: black;*/
+    /*padding: 10px;*/
+    /*width: 100%;*/
+/*}*/
+/*input:placeholder-shown {*/
+    /*!*border: 2px solid silver;*!*/
+    /*width: 20%;*/
+/*}*/

@@ -12,7 +12,10 @@ public class PersonRole {
     private long roleid;
     private String rolename;
 
-    public long getRoleid() {
+  public PersonRole () {
+  }
+
+  public long getRoleid() {
         return roleid;
     }
 
@@ -31,5 +34,9 @@ public class PersonRole {
     public PersonRole(long roleid, String rolename) {
         this.roleid = roleid;
         this.rolename = rolename;
+    }
+
+    public PersonRole(String rolename) {
+      this.rolename = rolename;
     }
 }
