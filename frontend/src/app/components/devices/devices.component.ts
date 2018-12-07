@@ -26,8 +26,15 @@ export class DevicesComponent implements OnInit {
     this.getRooms();
   }
 
-  onRoomSelect(event){
+  onRoomSelect(){
     console.log(this.selectedRoomId);
+  }
+
+  onRoomUpdate(device){
+    console.log(device);
+    //console.log(id);
+    //device.setRoomId(id);
+    //console.log(id);
   }
   
   getDevices(): void {
@@ -45,8 +52,8 @@ export class DevicesComponent implements OnInit {
    /** 
     * Unlike the device's attributes, we get roomId via selectedRoomId's double binding. 
     */
-  addDevice(id: number, name: string, status: boolean, type: string, information: string) { 
-    let device = new Device(id, name, status, type, information, this.selectedRoomId); 
+  addDevice(name: string, status: boolean, type: string, information: string) { 
+    let device = new Device(-1, name, status, type, information, this.selectedRoomId); 
     this.deviceService.addDevice(device).subscribe(value => this.devices = value);   // Remove device.id from UI
     //this.devices.push(device); 
   }
@@ -54,7 +61,7 @@ export class DevicesComponent implements OnInit {
   removeDevice(device: Device) {  
     this.deviceService.removeDevice(device.id).subscribe(value => this.devices = value);   // refresh page after any request ***
     // console.log(this.rooms);
-    return; // maybe inform someone the device has been deleted ???
+    return; 
   }
   
   updateDevice(device: Device) {  

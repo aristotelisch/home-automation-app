@@ -37,8 +37,8 @@ public class HomeAutomationApplication implements CommandLineRunner {
 
 		deviceService.save (new Device ("Living Room Light 1", "onoff", true, "Living Room Light is Switched ON", lRoom1));
 		deviceService.save (new Device ("Living Room Light 2", "onoff", true, "Living Room Light is Switched ON", lRoom1));
-		deviceService.save (new Device ("Bedroom Light 1", "onoff", true, "Living Room Light is Switched ON", lRoom2));
-		deviceService.save (new Device ("Bedroom Light 2", "onoff", true, "Living Room Light is Switched ON", lRoom2));
+		deviceService.save (new Device ("Bedroom Light 1", "onoff", true, "Bedroom Light is Switched ON", lRoom2));
+		deviceService.save (new Device ("Bedroom Light 2", "onoff", true, "Bedroom Light is Switched ON", lRoom2));
 
 		roomService.findAll ().forEach (room -> System.out.println (room.getName ()));
 		deviceService.findAll ().forEach (device -> System.out.println (device.getName ()));
