@@ -66,7 +66,7 @@ public class DeviceController {
     @PutMapping("/devices")
     public Collection<Device> updateDevice(@RequestBody Device device){
         System.out.println(device);
-        service.save(device);
+        service.save(device, device.getRoomId());
         return StreamSupport.stream(service.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }

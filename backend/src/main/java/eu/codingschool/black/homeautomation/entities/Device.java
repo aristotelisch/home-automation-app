@@ -1,6 +1,11 @@
 package eu.codingschool.black.homeautomation.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Device {
@@ -16,7 +21,12 @@ public class Device {
   @Transient
   private long roomId;
 
+  @Transient
+  private String roomName;
+
   @ManyToOne
+  //@JsonManagedReference            // serializes normally
+  @JsonIgnore           // we don't want to return the Room along with the Device
   @JoinColumn(name = "room")
   private Room room;
 
@@ -38,6 +48,7 @@ public class Device {
   public Device (Device device, Room room){
     this(device.devicename, device.type, device.status, device.information);
     this.room = room;
+    this.deviceid=device.deviceid;
   }
 
   public long getId () {
@@ -80,9 +91,15 @@ public class Device {
     this.information = information;
   }
 
-  public long getRoomId() {
-    return roomId;
-  }
+  public Room getRoom() {return room;}
+
+  public void setRoom(Room room) {this.room = room;}
+
+  public long getRoomId() {return this.roomId;}
+
+  public String getRoomName() {return this.room.getName();}
+
+  public void setRoomName(String roomName) {this.roomName = roomName; }
 
   public void setRoomId(long roomId) {
     this.roomId = roomId;
@@ -90,6 +107,6 @@ public class Device {
 
   @Override
   public String toString() {
-    return this.deviceid + " " +this.devicename;
+    return this.deviceid + " " +this.devicename +"           "+ this.roomId + " "+ this.roomName +"                ";
   }
 }

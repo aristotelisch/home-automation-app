@@ -1,5 +1,6 @@
 package eu.codingschool.black.homeautomation.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import net.bytebuddy.implementation.bind.annotation.Default;
 
 import javax.persistence.*;
@@ -35,6 +36,7 @@ public class Room {
 
 
   @OneToMany(mappedBy = "room")
+  //@JsonBackReference            // omits serialization
   private List<Device> devices;
 
   public long getId() {
