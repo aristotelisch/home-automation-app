@@ -3,18 +3,16 @@ package eu.codingschool.black.homeautomation;
 import eu.codingschool.black.homeautomation.entities.Device;
 import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.entities.Room;
-import eu.codingschool.black.homeautomation.repositories.DeviceRepository;
 import eu.codingschool.black.homeautomation.services.DeviceService;
+import eu.codingschool.black.homeautomation.services.PersonService;
 import eu.codingschool.black.homeautomation.services.RoomService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.stream.Stream;
 
 @SpringBootApplication
 public class HomeAutomationApplication implements CommandLineRunner {
@@ -25,6 +23,12 @@ public class HomeAutomationApplication implements CommandLineRunner {
 	@Autowired
 	RoomService roomService;
 
+	@Autowired
+	PersonService personService;
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	public static void main (String[] args) {
 		SpringApplication.run (HomeAutomationApplication.class, args);
 	}
@@ -32,7 +36,12 @@ public class HomeAutomationApplication implements CommandLineRunner {
 	@Override
 	public void run (String... args) throws Exception {
 
+
+
 		Person simpleUser = new Person();
+		simpleUser.setUsername ("aristotelis");
+		simpleUser.setPassword ("password");
+		personService.save (simpleUser);
 
 	  Room lRoom1 = new Room ("Living Room", "living_room.jpg");
 		roomService.save (lRoom1);
@@ -47,8 +56,5 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		roomService.findAll ().forEach (room -> System.out.println (room.getName ()));
 		deviceService.findAll ().forEach (device -> System.out.println (device.getName ()));
 	}
-
-
 }
-
 

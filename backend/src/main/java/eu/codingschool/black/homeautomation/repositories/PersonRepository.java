@@ -10,6 +10,7 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface PersonRepository extends JpaRepository<Person, Long>{
+    public Person findByUsername(String username);
     public Person findByPersonname(String personname);
     public List<Person> findByPersonnameContaining(String searchterm);
     public Person findByPersonid(long id);

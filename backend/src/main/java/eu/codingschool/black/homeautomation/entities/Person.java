@@ -1,5 +1,8 @@
 package eu.codingschool.black.homeautomation.entities;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -19,12 +22,12 @@ public class Person {
         this.personid = personid;
     }
 
-    public String getUserName () {
-        return userName;
+    public String getUsername () {
+        return username;
     }
 
-    public void setUserName (String userName) {
-        this.userName = userName;
+    public void setUsername (String username) {
+        this.username = username;
     }
 
     public Set<Device> getDevice () {
@@ -35,9 +38,11 @@ public class Person {
         this.device = device;
     }
 
-    private String userName;
+    @Column(nullable = false, unique = true)
+    private String username;
     private String surname;
     private String email;
+
     private String password;
 
     @ManyToOne

@@ -2,17 +2,18 @@ package eu.codingschool.black.homeautomation.controllers;
 
 import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.entities.PersonRole;
-import eu.codingschool.black.homeautomation.repositories.PersonRepository;
 import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
 import eu.codingschool.black.homeautomation.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.util.Base64;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -28,6 +29,9 @@ public class PersonController {
     @Autowired
     private PersonRoleRepository personRoleRepository;
 
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
     @GetMapping("/persons")
     public Collection<Person> getPersons() {
         return StreamSupport.stream(personService.findAll().spliterator(), false)
@@ -36,8 +40,16 @@ public class PersonController {
 
     @RequestMapping("/login")
     public boolean login(@RequestBody Person user) {
-        return user.getUserName ().equals("user") && user.getPassword().equals("password") ||
-                user.getUserName ().equals("admin") && user.getPassword().equals("password");
+        UserDetails authUser = personService.loadUserByUsername ((user.getUsername ()));
+        if (authUser != null) {
+            if (passwordEncoder.matches(user.getPassword (), authUser.getPassword ())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     @PostMapping("/register")

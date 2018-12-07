@@ -1,6 +1,8 @@
 package eu.codingschool.black.homeautomation.services;
 
+import eu.codingschool.black.homeautomation.entities.MyUserPrincipal;
 import eu.codingschool.black.homeautomation.entities.Person;
+import eu.codingschool.black.homeautomation.repositories.PersonRepository;
 import eu.codingschool.black.homeautomation.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,18 +17,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Service("userDetailsServiceImpl")
-public class UserDetailsServiceImpl implements UserDetailsService{
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
     @Autowired
-    private PersonService personService;
+    private PersonRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String personname) throws UsernameNotFoundException {
-        Person person = personService.findByPersonname(personname);
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        if(person!=null) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(person.getPersonrole().toString()));
+    public UserDetails loadUserByUsername(String username) {
+        Person user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
         }
-        return new org.springframework.security.core.userdetails.User(person.getPersonname(), person.getPassword(), grantedAuthorities);
+        return new MyUserPrincipal (user);
     }
 }

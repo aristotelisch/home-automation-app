@@ -5,6 +5,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {MessageService} from 'primeng/api';
 
+
 @Component({
   selector: 'app-authenticate',
   templateUrl: './authenticate.component.html',
@@ -30,7 +31,7 @@ export class AuthenticateComponent implements OnInit {
   login() {
     const url = 'http://localhost:8080/login';
     this.http.post<Observable<boolean>>(url, {
-      userName: this.model.username,
+      username: this.model.username,
       password: this.model.password
     }).subscribe(isValid => {
       if (isValid) {
