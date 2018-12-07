@@ -2,20 +2,22 @@
 <p> Devices' Table: </p>
 
 <div class="devices">
-    <table class="device" style="width:100%">
+    <table class="device" style="width:95%">
         <tr>
-          <th>id</th>
+          <!-- <th>id</th> -->
           <th>name</th>
           <th>status</th>
           <th>type</th>
           <th>information</th>
+          <th>roomName</th>
         </tr>
     </table>
-    <table class="device" *ngFor="let device of devices" style="width:100%">
+    <table class="device" *ngFor="let device of devices" style="width:95%">
         <tr>
-          <td>
-            <input [(ngModel)]="device.id" placeholder="{{device.id}}"> <!-- *** this column should be removed *** -->
-          </td> 
+          <!-- *** this column should be removed *** -->
+          <!-- <td>
+            <input [(ngModel)]="device.id" placeholder="{{device.id}}"> 
+          </td>  -->
           <td>
             <input [(ngModel)]="device.name" placeholder="{{device.name}}">
           </td>
@@ -28,21 +30,34 @@
           <td>
             <input [(ngModel)]="device.information" placeholder="{{device.information}}">
           </td> 
+          <td>
+            <select class="rooms" [(ngModel)]="device.roomId" (ngModelChange)='onRoomUpdate(device)'>
+              <!-- <option disabled selected>{{device.roomName}}</option> -->
+              <option class="room" *ngFor='let room of rooms' [(value)]="room.id">{{room.name}}</option>
+            </select>
+            <!-- ADD ROOM NAME -->
+          </td> 
           
-          <p><button (click)="removeDevice(device)"> Delete </button> <!--  -->
-          <button (click)="updateDevice(device)"> Update </button></p> <!--  -->
+          <p><button (click)="removeDevice(device)"> Delete </button>
+          <button (click)="updateDevice(device)"> Update </button></p> 
 
        </tr>
     </table> 
  
     <br>
-    <input #id placeholder="id" /> 
+    <!-- <input #id placeholder="id" />  -->
     <input #name placeholder="name" /> 
     <input #status placeholder="status" /> 
     <input #type placeholder="type" />
     <input #information placeholder="information" />
+  
+    <select class="rooms" required [(ngModel)]="selectedRoomId" (ngModelChange)='onRoomSelect()'>
+      <option class="room" *ngFor='let room of rooms' [value]="room.id">{{room.name}}</option>
+    </select>
+    
 
-    <button (click)="addDevice(id.value,name.value,status.value,type.value,information.value)"> Add </button> <!--  -->
+
+    <button (click)="addDevice(name.value,status.value,type.value,information.value)"> Add </button> 
  
 
 </div>

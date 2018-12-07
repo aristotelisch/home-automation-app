@@ -1,10 +1,12 @@
 package eu.codingschool.black.homeautomation.controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import eu.codingschool.black.homeautomation.entities.Device;
 import eu.codingschool.black.homeautomation.services.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -36,31 +38,13 @@ public class DeviceController {
      * Implemented direct mapping to Device bellow.
      * Have not implemented any kind of checking on the Device input. ***
      */
-    /*
-    public Collection<Device> addDevice(@RequestBody String payload){
-
-        System.out.println(payload);
-        try {
-            Device device = new ObjectMapper().readValue(payload, Device.class);
-            System.out.println(device);
-            //return service.save(device);
-            service.save(device);
-            return StreamSupport.stream(service.findAll().spliterator(), false)
-                    .collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    */
-
-    public Collection<Device> addDevice(@RequestBody Device device){
-        service.save(device);
+    public Collection<Device> addDevice(@RequestBody Device device) {
+        service.save(device, device.getRoomId());
         return StreamSupport.stream(service.findAll().spliterator(), false)
-                    .collect(Collectors.toList());
+                .collect(Collectors.toList());
     }
 
     @DeleteMapping("/devices/{id}")
-    //public String removeDevice(@PathVariable("id") long id){
     public Collection<Device> removeDevice(@PathVariable("id") long id){
         service.deleteById(id);
         //return "The device with Id: " + id + ", has been deleted."; // check if actually deleted by trying to find it afterwards ???
@@ -75,7 +59,7 @@ public class DeviceController {
     @PutMapping("/devices")
     public Collection<Device> updateDevice(@RequestBody Device device){
         System.out.println(device);
-        service.save(device);
+        service.save(device, device.getRoomId());
         return StreamSupport.stream(service.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }

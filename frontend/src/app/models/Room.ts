@@ -3,4 +3,8 @@ export class Room {
   name: string;
   description: string;
   image: string;
+
+  public getRoomId(): number{
+    return this.id;
+  }
 }
