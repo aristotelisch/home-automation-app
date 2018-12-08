@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'authenticate', component: AuthenticateComponent, pathMatch: 'full' },
   { path: 'rooms', component: RoomsComponent, canActivate: [LoginGuard], pathMatch: 'full' },
   { path: 'devices', component: DevicesComponent, canActivate: [LoginGuard], pathMatch: 'full' },
+  { path: 'devices/:id', component: DevicesComponent, canActivate: [LoginGuard], pathMatch: 'full' },
   {
     path: 'admin',
     children: [

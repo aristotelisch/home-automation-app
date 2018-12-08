@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { RoomsService } from 'src/app/services/rooms.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import {MessageService} from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-devices',
@@ -16,51 +17,61 @@ import {MessageService} from 'primeng/api';
 export class DevicesComponent implements OnInit {
 
   devices: Device[] = [];
-  rooms: Room[] = [];
-  selectedRoomId: number;
+  // rooms: Room[] = [];
+  // selectedRoomId: number;
+  roomId: number;
 
-  constructor(private deviceService: DeviceService,
+
+  constructor(private route: ActivatedRoute,
+              private deviceService: DeviceService,
               private roomService: RoomsService,
               private messageService: MessageService
   ) { }
 
   ngOnInit() {
-    this.getDevices();
+    this.roomId = this.getRoomId();
+    this.roomId ? this.getDevicesByRoomId(this.roomId) : this.getDevices();
   }
 
-  onRoomSelect() {
-    console.log(this.selectedRoomId);
-  }
-
-  onRoomUpdate(device){
-    console.log(device);
-    //console.log(id);
-    //device.setRoomId(id);
-    //console.log(id);
+  getRoomId(): number {
+    return +this.route.snapshot.paramMap.get('id');
   }
 
   getDevices(): void {
+    // console.log("Should not here!!");
     this.deviceService.getDevices().subscribe(value => this.devices = value);
   }
 
-  updateDevice(device: Device) {
-    this.deviceService.updateDevice(device).subscribe(value => this.devices = value);
-    this.addSingleMessagePopUp('info', 'Device updated', '');
-    return;
+  getDevicesByRoomId(roomId: number){
+    this.deviceService.getDevicesByRoomId(roomId).subscribe(value => this.devices = value);
   }
 
+  // onRoomSelect() {
+  //   console.log(this.selectedRoomId);
+  // }
 
-  addSingleMessagePopUp(severity, summary, detail) {
-    this.messageService.add({severity: severity, summary: summary, detail: detail});
-    setTimeout(() => {
-      console.log('hide');
-      this.clearMessagePopUp();
-    }, 3000);
-  }
+  // onRoomUpdate(device){
+  //   console.log(device);
+  // }
 
-  clearMessagePopUp() {
-    this.messageService.clear();
-  }
+  // updateDevice(device: Device) {
+  //   this.deviceService.updateDevice(device).subscribe(value => this.devices = value);
+  //   this.addSingleMessagePopUp('info', 'Device updated', '');
+  //   return;
+  // }
+
+
+  // addSingleMessagePopUp(severity, summary, detail) {
+  //   this.messageService.add({severity: severity, summary: summary, detail: detail});
+  //   setTimeout(() => {
+  //     console.log('hide');
+  //     this.clearMessagePopUp();
+  //   }, 3000);
+  // }
+
+  // clearMessagePopUp() {
+  //   this.messageService.clear();
+  // }
 
 }
 

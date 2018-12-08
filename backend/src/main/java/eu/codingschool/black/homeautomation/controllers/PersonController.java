@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -73,8 +70,21 @@ public class PersonController {
         Person user = personService.findByUsername (username);
         List<Device> devices = StreamSupport.stream (user.getDevice ().spliterator (), false)
                 .collect(Collectors.toList());
-
+        System.out.println(devices);
         return  devices;
+    }
+
+    @GetMapping("/users/{username}/devices/{roomId}")
+    public Collection<Device> getUsers(@PathVariable("username") String username, @PathVariable ("roomId") long roomId) {
+        Person user = personService.findByUsername (username);
+        List<Device> devices = StreamSupport.stream (user.getDevice ().spliterator (), false)
+                .collect(Collectors.toList());
+        devices.forEach(device -> device.setRoomId(device.getRoom().getId()));
+        List<Device> resultDevices = new ArrayList<Device>();
+        for (Device device : devices) {
+            if (device.getRoomId() == roomId) resultDevices.add(device);
+        }
+        return  resultDevices;
     }
 
     // Work in progrees. We need it in order to return a list of rooms that a user has devices.
