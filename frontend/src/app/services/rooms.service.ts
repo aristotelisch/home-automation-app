@@ -18,4 +18,16 @@ export class RoomsService {
   getRooms(): Observable<Room[]>  {
     return this.http.get<Room[]>(this.roomsUrl, { headers: this.app.authHeaders });
   }
+
+  addRoom(room: Room): Observable<Room[]> {
+    return this.http.post<Room[]>(this.roomsUrl, room, { headers: this.app.authHeaders });
+  }
+
+  removeRoom(id: number): Observable<Room[]> {
+    return this.http.delete<Room[]>(this.roomsUrl + '/' + id, { headers: this.app.authHeaders });
+  }
+
+  updateRoom(room: Room): Observable<Room[]> {
+    return this.http.put<Room[]>(this.roomsUrl, room, { headers: this.app.authHeaders } );
+  }
 }
