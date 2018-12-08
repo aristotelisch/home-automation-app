@@ -14,6 +14,7 @@ export class ManageDevicesComponent implements OnInit {
 
 
   devices: Device[] = [];
+  allDevices: Device[] = [];
   rooms: Room[] = [];
   selectedRoomId: number;
 
@@ -24,6 +25,7 @@ export class ManageDevicesComponent implements OnInit {
 
   ngOnInit() {
     this.getDevices();
+    this.getAllDevices();
     this.getRooms();
   }
 
@@ -31,7 +33,7 @@ export class ManageDevicesComponent implements OnInit {
     console.log(this.selectedRoomId);
   }
 
-  onRoomUpdate(device){
+  onRoomUpdate(device) {
     console.log(device);
     //console.log(id);
     //device.setRoomId(id);
@@ -40,6 +42,10 @@ export class ManageDevicesComponent implements OnInit {
 
   getDevices(): void {
     this.deviceService.getDevices().subscribe(value => this.devices = value);
+  }
+
+  getAllDevices(): void {
+    this.deviceService.getAllDevices().subscribe(value => this.devices = value);
   }
 
   getRooms(): void {

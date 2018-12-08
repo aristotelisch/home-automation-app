@@ -23,6 +23,10 @@ export class DeviceService {
     return this.http.get<Device[]>(this.usersUrl + '/' + this.app.getUser().name + '/devices' , { headers: this.app.authHeaders } );
   }
 
+  getAllDevices(): Observable<Device[]> {
+    return this.http.get<Device[]>(this.devicesUrl , { headers: this.app.authHeaders } );
+  }
+
   addDevice(device: Device): Observable<Device[]> {
     return this.http.post<Device[]>(this.devicesUrl, device, { headers: this.app.authHeaders } );
   }

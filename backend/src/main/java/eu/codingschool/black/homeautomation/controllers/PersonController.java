@@ -77,18 +77,19 @@ public class PersonController {
         return  devices;
     }
 
-    @GetMapping("/users/{username}/rooms")
-    public Collection<Room> getRooms(@PathVariable("username") String username) {
-        Set<Room> rooms = new HashSet<>();
-
-        Person user = personService.findByUsername (username);
-
-        deviceService.findRooms()
-        List<Device> devices = StreamSupport.stream (user.getDevice ().spliterator (), false)
-                .collect(Collectors.toList());
-
-        return  devices;
-    }
+    // Work in progrees. We need it in order to return a list of rooms that a user has devices.
+//    @GetMapping("/users/{username}/rooms")
+//    public Collection<Room> getRooms(@PathVariable("username") String username) {
+//        Set<Room> rooms = new HashSet<>();
+//
+//        Person user = personService.findByUsername (username);
+//
+//        deviceService.findRooms()
+//        List<Device> devices = StreamSupport.stream (user.getDevice ().spliterator (), false)
+//                .collect(Collectors.toList());
+//
+//        return  devices;
+//    }
 
     @PostMapping("/users")
     public Collection<Person> addDevice(@RequestBody Person person) {
