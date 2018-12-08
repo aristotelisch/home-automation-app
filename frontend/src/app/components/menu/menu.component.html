@@ -5,64 +5,34 @@
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="mobile-menu">
           <nav id="dropdown">
+            <br>
             <ul class="mobile-menu-nav">
-              <li><a data-toggle="collapse" data-target="#Charts" href="#">Home</a>
-                <ul class="collapse dropdown-header-top">
-                  <li><a href="index.html">Dashboard One</a></li>
-
-                </ul>
-              </li>
-              <li><a data-toggle="collapse" data-target="#demoevent" href="#">Email</a>
-                <ul id="demoevent" class="collapse dropdown-header-top">
-                  <li><a href="inbox.html">Inbox</a></li>
-                </ul>
-              </li>
-              <li><a data-toggle="collapse" data-target="#democrou" href="#">Interface</a>
-                <ul id="democrou" class="collapse dropdown-header-top">
-                  <li><a href="animations.html">Animations</a></li>
-                </ul>
-              </li>
-              <li><a data-toggle="collapse" data-target="#demolibra" href="#">Charts</a>
-                <ul id="demolibra" class="collapse dropdown-header-top">
-                  <li><a href="flot-charts.html">Flot Charts</a></li>
-                </ul>
-              </li>
-              <li><a data-toggle="collapse" data-target="#demodepart" href="#">Tables</a>
-                <ul id="demodepart" class="collapse dropdown-header-top">
-                  <li><a href="normal-table.html">Normal Table</a></li>
-                </ul>
-              </li>
-              <li><a data-toggle="collapse" data-target="#demo" href="#">Forms</a>
-                <ul id="demo" class="collapse dropdown-header-top">
-                  <li><a href="form-elements.html">Form Elements</a></li>
-                </ul>
-              </li>
-              <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">App views</a>
-                <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                  <li><a href="notification.html">Notifications</a>
-                  </li>
-                  <li><a href="alert.html">Alerts</a>
-                  </li>
-                  <li><a href="modals.html">Modals</a>
+              <!-- <li><a data-toggle="collapse" data-target="#dashboard" href="#">Dashboard</a>
+                <ul class="collapse dropdown-header-top"> -->
+                  <li><a [ngStyle]="{'color': 'brown'}" routerLink="/rooms">Room List</a> | <a [ngStyle]="{'color': 'brown'}" routerLink="/devices">Device List</a></li>
+                  <!-- <li><a routerLink="/devices">Device List</a></li> -->
+                <!-- </ul> -->
+              <!-- </li> -->
+              <!-- <li><a data-toggle="collapse" data-target="#administrator" href="#">Administrator</a> -->
+                <br>
+                <ul *ngIf="user.isAdmin" id="administrator2"> <!-- class="collapse dropdown-header-top"> -->
+                  <li><a [ngStyle]="{'color': 'brown'}" routerLink="/admin/users">Manage Users</a> | 
+                    <a [ngStyle]="{'color': 'brown'}" routerLink="/admin/rooms">Manage Rooms</a> |
+                    <a [ngStyle]="{'color': 'brown'}" routerLink="/admin/devices">Manage Devices</a>
                   </li>
                 </ul>
-              </li>
-              <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages</a>
-                <ul id="Pagemob" class="collapse dropdown-header-top">
-                  <li><a href="contact.html">Contact</a>
-                  </li>
-                </ul>
-              </li>
+              <!-- </li> -->
             </ul>
           </nav>
         </div>
       </div>
     </div>
   </div>
-</div>
+</div> 
 <!-- Mobile Menu end -->
 <!-- Main Menu area start-->
-<div class="main-menu-area mg-tb-40">
+<br>
+<div class="main-menu-area mg-tb-25">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -76,10 +46,8 @@
           <div id="Home" class="tab-pane in notika-tab-menu-bg animated active flipInX">
             <ul class="notika-main-menu-dropdown">
 
-              <li><a routerLink="/rooms">Room List</a>
-              </li>
-              <li><a routerLink="/devices">Device List</a>
-              </li>
+              <li><a routerLink="/rooms">Room List</a></li>
+              <li><a routerLink="/devices">Device List</a></li>
 
             </ul>
           </div>

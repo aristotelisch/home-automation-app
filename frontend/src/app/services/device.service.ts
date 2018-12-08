@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Device} from '../models/Device';
+
 // import {mock_devices} from '../models/mock-devices';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -43,4 +44,3 @@ export class DeviceService {
     return this.http.put<Device[]>(this.devicesUrl, device, { headers: this.app.authHeaders } );
   }
 }
-
