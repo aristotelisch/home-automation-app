@@ -4,7 +4,7 @@ import { MessageService } from 'primeng/api';
 import { Room } from 'src/app/models/Room';
 
 @Component({
-  selector: 'app-admin-rooms',
+  selector: 'app-manage-rooms',
   templateUrl: './manage-rooms.component.html',
   styleUrls: ['./manage-rooms.component.css']
 })
