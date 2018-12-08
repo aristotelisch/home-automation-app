@@ -62,31 +62,57 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		roomService.save (lRoom6);
 
 
-		deviceService.save (new Device ("Kitchen Light", "onoff", true, "Kitchen Light is Switched ON", lRoom3));
-		deviceService.save (new Device ("Oven", "onoff", true, "Oven is turned ON", lRoom3));
-		deviceService.save (new Device ("Refrigerator", "onoff", true, "Refrigerator is turned ON", lRoom3));
-		deviceService.save (new Device ("Bathroom Light", "onoff", true, "Bathroom Light is turned ON", lRoom4));
-		deviceService.save (new Device ("Jacuzzi", "onoff", true, "Jacuzzi is warming", lRoom4));
-		deviceService.save (new Device ("Garage Light", "onoff", true, "Garage Light is switched ON", lRoom5));
-		deviceService.save (new Device ("Garage Door", "onoff", true, "Garage Door is opened", lRoom5));
-		deviceService.save (new Device ("Yard Light", "onoff", true, "Yard Light is turned ON", lRoom6));
-		deviceService.save (new Device ("Fountain", "onoff", true, "Fountain is making everyone wet", lRoom6));
-
-
 		Device device1 = new Device ("Living Room Light 1", "onoff", true, "Living Room Light is Switched ON", lRoom1);
 		deviceService.save (device1);
 
 		Device device2 = new Device ("Living Room Light 2", "onoff", true, "Living Room Light is Switched ON", lRoom1);
 		deviceService.save (device2);
 
+		deviceService.save (new Device ("Radio", "onoff", true, "Radio is turned ON", lRoom6));
+
+
 		Device device3 = new Device ("Living Room Light 3", "onoff", true, "Living Room Light is Switched ON", lRoom1);
 		deviceService.save (device3);
 
-    Device device4 = new Device ("Bedroom Light 1", "onoff", true, "Bedroom Light is Switched ON", lRoom2);
-    deviceService.save(device4);
+    	Device device4 = new Device ("Bedroom Light 1", "onoff", true, "Bedroom Light is Switched ON", lRoom2);
+    	deviceService.save(device4);
 
-    Device device5 = new Device ("Bedroom Light 2", "onoff", true, "Bedroom Light is Switched ON", lRoom2);
+    	Device device5 = new Device ("Bedroom Light 2", "onoff", true, "Bedroom Light is Switched ON", lRoom2);
 		deviceService.save (device5);
+
+		Device device6 = new Device ("Kitchen Light", "onoff", true, "Kitchen Light is Switched ON", lRoom3);
+		deviceService.save (device6);
+
+		Device device7 = new Device ("Oven", "onoff", true, "Oven is turned ON", lRoom3);
+		deviceService.save(device7);
+
+		Device device8 = new Device ("Refrigerator", "onoff", true, "Refrigerator is turned ON", lRoom3);
+		deviceService.save(device8);
+
+		Device device9 = new Device ("Dishwasher", "onoff", true, "Dishwasher is turned ON", lRoom3);
+		deviceService.save(device9);
+
+		Device device10 = new Device ("Microwave", "onoff", true, "Microwave is turned ON", lRoom3);
+		deviceService.save(device10);
+
+		Device device11 = new Device ("Bathroom Light", "onoff", true, "Bathroom Light is turned ON", lRoom4);
+		deviceService.save(device11);
+
+		Device device12 = new Device ("Jacuzzi", "onoff", true, "Jacuzzi is warming", lRoom4);
+		deviceService.save(device12);
+
+		Device device13 = new Device ("Garage Light", "onoff", true, "Garage Light is switched ON", lRoom5);
+		deviceService.save (device13);
+
+		Device device14 = new Device ("Garage Door", "onoff", true, "Garage Door is opened", lRoom5);
+		deviceService.save (device14);
+
+		Device device15 = new Device ("Yard Light", "onoff", true, "Yard Light is turned ON", lRoom6);
+		deviceService.save(device15);
+
+		Device device16 = new Device ("Fountain", "onoff", true, "Fountain is making everyone wet", lRoom6);
+		deviceService.save(device16);
+
 
 		PersonRole userRole = new PersonRole ("ROLE_USER");
 		PersonRole adminRole = new PersonRole ("ROLE_ADMIN");
@@ -97,11 +123,23 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		simpleUserDevices.add(device1);
 		simpleUserDevices.add(device2);
 		simpleUserDevices.add(device4);
+		simpleUserDevices.add(device7);
+		simpleUserDevices.add(device9);
+		simpleUserDevices.add(device11);
+		simpleUserDevices.add(device13);
+		simpleUserDevices.add(device15);
+
 
 		Set<Device> adminUserDevices = new HashSet<>();
 		adminUserDevices.add(device1);
 		adminUserDevices.add(device3);
 		adminUserDevices.add(device5);
+		adminUserDevices.add(device6);
+		adminUserDevices.add(device8);
+		adminUserDevices.add(device10);
+		adminUserDevices.add(device12);
+		adminUserDevices.add(device14);
+		adminUserDevices.add(device16);
 
 		Person simpleUser = new Person();
 		simpleUser.setUsername ("user");
