@@ -1,9 +1,75 @@
 
-<app-header></app-header>
-
-<app-menu></app-menu>
-<p>
-  manage-rooms works!
-</p>
-
-<app-footer></app-footer>
+<div class="normal-table-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="normal-table-list">
+            <div class="basic-tb-hd">
+              <h2>Rooms' Table: </h2>
+              <p>Edit all available rooms</p>
+            </div>
+            <div class="bsc-tbl">
+              <table class="table table-sc-ex">
+                <tr>
+                  <!-- <th>id</th> -->
+                  <th>name</th>
+                  <th>image</th>
+                  <th></th>
+                </tr>
+                <!--</table>-->
+                <tr *ngFor="let room of rooms">
+                  <!-- *** this column should be removed *** -->
+                  <!-- <td>
+                  <input [(ngModel)]="device.id" placeholder="{{device.id}}">
+                  </td>  -->
+                  <td>
+                    <input [(ngModel)]="room.name" placeholder="{{room.name}}">
+                  </td>
+                  <td>
+                    <input [(ngModel)]="room.image" placeholder="{{room.image}}">
+                  </td>
+                  <td>
+                  <td>
+                    <div class="btn-group-xs">
+                      <button class="btn btn-warning btn-xs"(click)="updateRoom(room)"> Update </button>
+                      <button class="btn btn-danger btn-xs"(click)="removeRoom(room)"> Delete </button>
+                    </div>
+                  </td>  
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <div class="normal-table-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="normal-table-list">
+            <div class="bsc-tbl">
+              <table class="table table-sc-ex">
+  
+                <tr>
+                  <td>
+                    <input #name placeholder="name" />
+                  </td>
+                  <td>
+                    <input #image placeholder="image" />
+                  </td>
+                  <td>
+                    <button class="btn btn-primary btn-sm"(click)="addRoom(name.value, image.value)"> Add Room </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
