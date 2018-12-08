@@ -68,9 +68,6 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		Device device2 = new Device ("Living Room Light 2", "onoff", true, "Living Room Light is Switched ON", lRoom1);
 		deviceService.save (device2);
 
-		deviceService.save (new Device ("Radio", "onoff", true, "Radio is turned ON", lRoom6));
-
-
 		Device device3 = new Device ("Living Room Light 3", "onoff", true, "Living Room Light is Switched ON", lRoom1);
 		deviceService.save (device3);
 
@@ -113,6 +110,10 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		Device device16 = new Device ("Fountain", "onoff", true, "Fountain is making everyone wet", lRoom6);
 		deviceService.save(device16);
 
+		Device device17 = new Device ("Radio", "onoff", true, "Radio is turned ON", lRoom6);
+		deviceService.save (device17);
+
+
 
 		PersonRole userRole = new PersonRole ("ROLE_USER");
 		PersonRole adminRole = new PersonRole ("ROLE_ADMIN");
@@ -140,6 +141,7 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		adminUserDevices.add(device12);
 		adminUserDevices.add(device14);
 		adminUserDevices.add(device16);
+		adminUserDevices.add(device17);
 
 		Person simpleUser = new Person();
 		simpleUser.setUsername ("user");
