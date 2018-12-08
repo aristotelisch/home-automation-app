@@ -15,17 +15,13 @@ export class AppComponent {
   title = 'Home Automation App';
   logoutUrl = 'http://localhost:8080/logout';
   authenticated = false;
-  currentUser: User;
+  user: User;
 
   constructor(private app: AppService, private http: HttpClient, private router: Router) {
 
     if (sessionStorage.getItem('token')) {
-      console.log('At AppComponent constructor');
-      console.log(sessionStorage.getItem('token'));
-      console.log( typeof sessionStorage.getItem('token'));
-      console.log(sessionStorage.getItem('token').length);
-      console.log('about to run authenticate function');
       this.app.authenticate(undefined);
+      this.authenticated = this.app.authenticated;
     }
   }
 

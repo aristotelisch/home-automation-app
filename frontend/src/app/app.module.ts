@@ -5,9 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './components/devices/devices.component';
-import { RoomsComponent } from './rooms/rooms.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
-import { RoomComponent } from './room/room.component';
+import { RoomComponent } from './components/room/room.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -19,6 +19,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {MessageService} from 'primeng/api';
+import { ManageRoomsComponent } from './components/manage-rooms/manage-rooms.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
+import { ManageDevicesComponent } from './components/manage-devices/manage-devices.component';
+import { DashboardRoomsComponent } from './components/dashboard-rooms/dashboard-rooms.component';
+import { DashboardDevicesComponent } from './components/dashboard-devices/dashboard-devices.component';
 
 
 @NgModule({
@@ -34,6 +39,11 @@ import {MessageService} from 'primeng/api';
     FooterComponent,
     HeaderComponent,
     BreadcrumbComponent,
+    ManageRoomsComponent,
+    ManageUsersComponent,
+    ManageDevicesComponent,
+    DashboardRoomsComponent,
+    DashboardDevicesComponent,
   ],
   imports: [
     BrowserModule,

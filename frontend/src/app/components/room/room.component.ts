@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Room} from '../models/Room';
+import {Room} from '../../models/Room';
 
 @Component({
   selector: 'app-room',

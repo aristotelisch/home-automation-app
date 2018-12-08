@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<app-menu></app-menu>
+
+<div class="animation-area">
+  <div class="container">
+    <div class="row">
+      <app-room *ngFor="let room of rooms" [room]="room"></app-room>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

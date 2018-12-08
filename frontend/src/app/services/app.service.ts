@@ -15,6 +15,7 @@ export class AppService {
   authenticated = false;
 
   constructor(private http: HttpClient, private router: Router, private messageService: MessageService) {
+    this.user = new User('Anonymous', false);
   }
 
   setToken (token: string) {
@@ -55,6 +56,7 @@ export class AppService {
         // this.setUser(new User(response['name'], isAdmin));
         console.log(response);
         this.setUser(new User(response['principal']['username'], true));
+        console.log(this.user);
       } else {
         this.authenticated = false;
       }
