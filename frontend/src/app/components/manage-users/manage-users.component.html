@@ -1,9 +1,120 @@
-
 <app-header></app-header>
 
 <app-menu></app-menu>
-<p>
-  manage-users works!
-</p>
+
+<div class="normal-table-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="normal-table-list">
+          <div class="basic-tb-hd">
+            <h2>Users' Table: </h2>
+            <p>Manage Users</p>
+          </div>
+          <div class="bsc-tbl">
+            <table class="table table-sc-ex">
+              <tr>
+                <!-- <th>id</th> -->
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th></th>
+              </tr>
+              <!--</table>-->
+              <tr *ngFor="let user of users">
+                <!-- *** this column should be removed *** -->
+                <!-- <td>
+                <input [(ngModel)]="device.id" placeholder="{{device.id}}">
+                </td>  -->
+                <td>
+                  <input [(ngModel)]="user.personname" placeholder="{{user.personname}}">
+                </td>
+                <td>
+                  <input [(ngModel)]="user.surname" placeholder="{{user.surname}}">
+                </td>
+                <td>
+                  <input [(ngModel)]="user.username" placeholder="{{user.username}}">
+                </td>
+                <td>
+                  <input type="password" [(ngModel)]="user.password" placeholder="{{user.password}}">
+                </td>
+                <td>
+                  <input [(ngModel)]="user.email" placeholder="{{user.email}}">
+                </td>
+                <!--<td>-->
+                  <!--<select class="rooms" [(ngModel)]="device.roomId" (ngModelChange)='onRoomUpdate(device)'>-->
+                    <!--&lt;!&ndash; <option disabled selected>{{device.roomName}}</option> &ndash;&gt;-->
+                    <!--<option class="room" *ngFor='let room of rooms' [(value)]="room.id">{{room.name}}</option>-->
+                  <!--</select>-->
+                  <!--&lt;!&ndash; ADD ROOM NAME &ndash;&gt;-->
+                <!--</td>-->
+
+                <td>
+                  <div class="btn-group-xs">
+                    <button class="btn btn-warning btn-xs"(click)="updateUser(user)"> Update </button>
+                    <button class="btn btn-danger btn-xs"(click)="removeUser(user)"> Delete </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="normal-table-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="normal-table-list">
+          <div class="bsc-tbl">
+            <table class="table table-sc-ex">
+
+              <tr>
+                <!-- <input #id placeholder="id" />  -->
+                <td>
+                  <input #username placeholder="username" />
+                </td>
+                <td>
+                  <input type="password" #password placeholder="password" />
+                </td>
+                <td>
+                  <input #email placeholder="email" />
+                </td>
+                <td>
+                  <input #personname placeholder="personname" />
+                </td>
+                <td>
+                  <input #surname placeholder="surname" />
+                </td>
+
+                <!--<td>-->
+                  <!--<select class="rooms" required [(ngModel)]="selectedRoomId" (ngModelChange)='onRoomSelect()'>-->
+                    <!--<option class="room" *ngFor='let room of rooms' [value]="room.id">{{room.name}}</option>-->
+                  <!--</select>-->
+                <!--</td>-->
+
+
+                <td>
+                  <button class="btn btn-primary btn-sm"
+                          (click)="addUser(username.value, email.value, personname.value, password.value,  surname.value)">
+                           Add User
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <app-footer></app-footer>

@@ -52,6 +52,34 @@ public class PersonController {
         }
     }
 
+    @GetMapping("/users")
+    public Collection<Person> getUsers() {
+        return StreamSupport.stream (personService.findAll ().spliterator (), false)
+                .collect(Collectors.toList());
+    }
+
+    @PostMapping("/users")
+    public Collection<Person> addDevice(@RequestBody Person person) {
+        personService.save (person);
+        return StreamSupport.stream (personService.findAll ().spliterator (), false)
+                .collect (Collectors.toList ());
+    }
+
+    @DeleteMapping("/users/{id}")
+    public Collection<Person> removeDevice(@PathVariable("id") long id){
+        personService.deleteById(id);
+        return StreamSupport.stream(personService.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+    }
+
+    @PutMapping("/users")
+    public Collection<Person> updateDevice(@RequestBody Person person){
+        System.out.println(person);
+        personService.save(person);
+        return StreamSupport.stream(personService.findAll().spliterator(), false)
+                .collect(Collectors.toList());
+    }
+
     @PostMapping("/register")
     public boolean register(@RequestBody Person person) {
         try {
@@ -73,7 +101,6 @@ public class PersonController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
 
-        // return () -> new String(Base64.getDecoder().decode(authToken)).split(":")[0];
         return authentication;
     }
 }
