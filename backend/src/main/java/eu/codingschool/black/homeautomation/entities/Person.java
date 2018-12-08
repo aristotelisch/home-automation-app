@@ -1,9 +1,15 @@
 package eu.codingschool.black.homeautomation.entities;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,7 +32,7 @@ public class Person {
         return username;
     }
 
-    public void setUsername (String username) {
+  public void setUsername (String username) {
         this.username = username;
     }
 
@@ -49,7 +55,7 @@ public class Person {
     @JoinColumn(name = "personrole")
     protected PersonRole personrole;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "persondevice", joinColumns = @JoinColumn(name = "personid", referencedColumnName = "personid"), inverseJoinColumns = @JoinColumn(name = "deviceid", referencedColumnName = "deviceid"))
     private Set<Device> device;
 
@@ -100,7 +106,15 @@ public class Person {
         this.email = email;
     }
 
-    public String getPassword() {
+//  @Override
+//  public Collection<? extends GrantedAuthority> getAuthorities() {
+//    List<GrantedAuthority> authorities = new ArrayList<> ();
+//    authorities.add(new SimpleGrantedAuthority (personrole.getRolename()));
+//    return authorities;
+//  }
+
+
+  public String getPassword() {
         return password;
     }
 

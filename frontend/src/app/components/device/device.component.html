@@ -1,0 +1,19 @@
+
+
+  <div class="container" class="text-center">
+    <div class="row" class="text-center">
+      <button [ngStyle]="{'color': 'white', 'background-color': 'black'}" onclick="document.getElementById('myImage').src='assets/img/devices/9.jpg'">OFF</button>
+      <button [ngStyle]="{'color': 'black', 'background-color': 'white'}" onclick="document.getElementById('myImage').src='assets/img/devices/10.jpg'">ON</button>
+    </div>
+    <img id="myImage" src="assets/img/devices/9.jpg" style="width:300px" class="rounded-circle">
+  </div>
+  <div class="bathroom-caption" class="text-center">
+    <div class="row" class="text-center">
+      <h5>Type: {{device.type}}</h5>
+      <h5>Information:</h5>
+      <p>{{device.name}}</p>
+      <p>{{device.information}}</p>
+      <p class="text-muted">Status: {{device.status}}</p>
+    </div>
+  </div>
+  <br>

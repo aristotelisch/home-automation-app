@@ -1,6 +1,8 @@
 package eu.codingschool.black.homeautomation.services;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import eu.codingschool.black.homeautomation.entities.MyUserPrincipal;
@@ -9,6 +11,8 @@ import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.repositories.PersonRepository;
 import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,6 +42,7 @@ public class PersonServiceImpl implements PersonService {
         return new MyUserPrincipal (user);
     }
 
+
     @Override
     public Person findByPersonname(String personname) {
         return personRepository.findByPersonname(personname);
@@ -49,12 +54,14 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    public Person findByUsername (String username) {
+        return personRepository.findByUsername(username);
+    }
+
+    @Override
     public void save(Person person) {
         //encrypt the user password
         person.setPassword(passwordEncoder.encode(person.getPassword()));
-
-        // Set the user's personrole as a simple user
-        person.setPersonrole(personRoleRepository.findByRolename("USER"));
         personRepository.save(person);
     }
 

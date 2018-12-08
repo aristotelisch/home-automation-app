@@ -1,8 +1,11 @@
 package eu.codingschool.black.homeautomation.controllers;
 
+import eu.codingschool.black.homeautomation.entities.Device;
 import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.entities.PersonRole;
+import eu.codingschool.black.homeautomation.entities.Room;
 import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
+import eu.codingschool.black.homeautomation.services.DeviceService;
 import eu.codingschool.black.homeautomation.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -25,6 +31,9 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    private DeviceService deviceService;
 
     @Autowired
     private PersonRoleRepository personRoleRepository;
@@ -58,6 +67,29 @@ public class PersonController {
                 .collect(Collectors.toList());
     }
 
+
+    @GetMapping("/users/{username}/devices")
+    public Collection<Device> getUsers(@PathVariable("username") String username) {
+        Person user = personService.findByUsername (username);
+        List<Device> devices = StreamSupport.stream (user.getDevice ().spliterator (), false)
+                .collect(Collectors.toList());
+
+        return  devices;
+    }
+
+    @GetMapping("/users/{username}/rooms")
+    public Collection<Room> getRooms(@PathVariable("username") String username) {
+        Set<Room> rooms = new HashSet<>();
+
+        Person user = personService.findByUsername (username);
+
+        deviceService.findRooms()
+        List<Device> devices = StreamSupport.stream (user.getDevice ().spliterator (), false)
+                .collect(Collectors.toList());
+
+        return  devices;
+    }
+
     @PostMapping("/users")
     public Collection<Person> addDevice(@RequestBody Person person) {
         personService.save (person);
@@ -75,6 +107,10 @@ public class PersonController {
     @PutMapping("/users")
     public Collection<Person> updateDevice(@RequestBody Person person){
         System.out.println(person);
+        if (person.getPassword ().equals("")) {
+            String pass = personService.findByUsername(person.getUsername ()).getPassword ();
+            person.setPassword (pass);
+        }
         personService.save(person);
         return StreamSupport.stream(personService.findAll().spliterator(), false)
                 .collect(Collectors.toList());

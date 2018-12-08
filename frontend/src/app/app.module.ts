@@ -24,6 +24,7 @@ import { ManageUsersComponent } from './components/manage-users/manage-users.com
 import { ManageDevicesComponent } from './components/manage-devices/manage-devices.component';
 import { DashboardRoomsComponent } from './components/dashboard-rooms/dashboard-rooms.component';
 import { DashboardDevicesComponent } from './components/dashboard-devices/dashboard-devices.component';
+import { DeviceComponent } from './components/device/device.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { DashboardDevicesComponent } from './components/dashboard-devices/dashbo
     ManageDevicesComponent,
     DashboardRoomsComponent,
     DashboardDevicesComponent,
+    DeviceComponent,
   ],
   imports: [
     BrowserModule,

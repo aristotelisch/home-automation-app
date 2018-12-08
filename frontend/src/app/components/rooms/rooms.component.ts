@@ -24,4 +24,9 @@ export class RoomsComponent implements OnInit {
     this.roomService.getRooms().subscribe(data => this.rooms = data);
   }
 
+  getDevices(room: Room): void {
+    this.roomService.getDevices(room).subscribe(data =>
+      this.rooms = data);
+  }
+
 }

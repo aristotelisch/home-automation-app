@@ -67,13 +67,13 @@
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-          <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i>Dashboard</a>
+          <li><a data-toggle="tab" href="#Home" aria-expanded="true"><i class="notika-icon notika-house"></i>Dashboard</a>
           </li>
-          <li *ngIf="user.isAdmin"><a data-toggle="tab"  href="#Interface"><i class="notika-icon notika-edit"></i>Administrator</a>
+          <li *ngIf="user.isAdmin"><a data-toggle="tab"  href="#administrator"aria-expanded="false"><i class="notika-icon notika-edit"></i>Administrator</a>
           </li>
         </ul>
         <div class="tab-content custom-menu-content">
-          <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
+          <div id="Home" class="tab-pane in notika-tab-menu-bg animated active flipInX">
             <ul class="notika-main-menu-dropdown">
 
               <li><a routerLink="/rooms">Room List</a>
@@ -83,7 +83,7 @@
 
             </ul>
           </div>
-          <div id="Interface" class="tab-pane active notika-tab-menu-bg animated flipInX">
+          <div *ngIf="user.isAdmin" id="administrator" class="tab-pane notika-tab-menu-bg animated flipInX">
             <ul class="notika-main-menu-dropdown">
               <li><a routerLink="/admin/users">Manage Users</a>
               </li>

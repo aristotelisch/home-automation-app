@@ -43,8 +43,8 @@ public class HomeAutomationApplication implements CommandLineRunner {
 	@Override
 	public void run (String... args) throws Exception {
 
-		PersonRole userRole = new PersonRole ("USER");
-		PersonRole adminRole = new PersonRole ("ADMIN");
+		PersonRole userRole = new PersonRole ("ROLE_USER");
+		PersonRole adminRole = new PersonRole ("ROLE_ADMIN");
 		personRoleRepository.save(userRole);
 		personRoleRepository.save(adminRole);
 

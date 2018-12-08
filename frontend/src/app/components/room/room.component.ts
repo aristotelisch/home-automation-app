@@ -16,4 +16,8 @@ export class RoomComponent implements OnInit {
   ngOnInit() {
   }
 
+  showDevices(room: Room): void {
+
+  }
+
 }

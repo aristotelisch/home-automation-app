@@ -45,17 +45,16 @@ export class AppService {
       if (response['authenticated'] === true) {
         this.authenticated = true;
         this.saveAuthHeaders(headers);
-        // const authority = response['authorities'][0]['authority'];
-        // let isAdmin = false;
-        // if (authority === 'ROLE_USER') {
-        //   isAdmin = false;
-        // } else if (authority === 'ROLE_ADMIN') {
-        //   isAdmin = true;
-        // }
+        const authority = response['authorities'][0]['authority'];
+        let isAdmin = false;
+        if (authority === 'ROLE_USER') {
+          isAdmin = false;
+        } else if (authority === 'ROLE_ADMIN') {
+          isAdmin = true;
+        }
 
-        // this.setUser(new User(response['name'], isAdmin));
         console.log(response);
-        this.setUser(new User(response['principal']['username'], true));
+        this.setUser(new User(response['principal']['username'], isAdmin));
         console.log(this.user);
       } else {
         this.authenticated = false;

@@ -29,6 +29,7 @@ export class ManageUsersComponent implements OnInit {
     user.email = email;
     user.personname = personname;
     user.password = password;
+    user.personrole = 'ROLE_USER';
 
     this.userService.addUser(user).subscribe(value => this.users = value);
     this.addSingleMessagePopUp('info', 'User updated', '');

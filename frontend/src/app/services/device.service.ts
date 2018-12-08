@@ -12,6 +12,7 @@ import {AppService} from './app.service';
 export class DeviceService {
 
   private devicesUrl = 'http://localhost:8080/devices';
+  private usersUrl = 'http://localhost:8080/users';
 
   private temp: Observable<Device>;
   private status: boolean;
@@ -19,7 +20,7 @@ export class DeviceService {
   constructor(private http: HttpClient, private app: AppService) { }
 
   getDevices(): Observable<Device[]> {
-    return this.http.get<Device[]>(this.devicesUrl, { headers: this.app.authHeaders } );
+    return this.http.get<Device[]>(this.usersUrl + '/' + this.app.getUser().name + '/devices' , { headers: this.app.authHeaders } );
   }
 
   addDevice(device: Device): Observable<Device[]> {
