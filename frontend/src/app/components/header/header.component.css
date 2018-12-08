@@ -1,3 +1,13 @@
+.header-top-area {
+  /* background-color: rgb(129, 63, 33); */
+  background-color: rgba(129, 63, 33, 0.87);
+}
+
+.search-dd {
+  background-color: rgb(129, 63, 33);
+}
+
+
 .top-menu-details {
   margin-top: 15px;
   color: white;
