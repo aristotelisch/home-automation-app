@@ -107,6 +107,6 @@ public class Device {
 
   @Override
   public String toString() {
-    return this.deviceid + " " +this.devicename +"           "+ this.roomId + " "+ this.roomName +"                ";
+    return this.deviceid + " " +this.devicename +"           "+ this.roomId + " "+ this.roomName +"               RoomId by Room " + this.room.getId();
   }
 }
