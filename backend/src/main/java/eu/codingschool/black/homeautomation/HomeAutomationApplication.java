@@ -48,10 +48,34 @@ public class HomeAutomationApplication implements CommandLineRunner {
 		Room lRoom2 = new Room ("Bedroom", "bedroom.jpg");
 		roomService.save (lRoom2);
 
+		Room lRoom3 = new Room ("Kitchen", "kitchen.jpg");
+		roomService.save (lRoom3);
+
+		Room lRoom4 = new Room ("Bathroom", "bathroom.jpg");
+		roomService.save (lRoom4);
+
+		Room lRoom5 = new Room ("Garage", "garage.jpg");
+		roomService.save (lRoom5);
+
+		Room lRoom6 = new Room ("Yard", "yard.jpg");
+		roomService.save (lRoom6);
+
 		deviceService.save (new Device ("Living Room Light 1", "onoff", true, "Living Room Light is Switched ON", lRoom1));
 		deviceService.save (new Device ("Living Room Light 2", "onoff", true, "Living Room Light is Switched ON", lRoom1));
 		deviceService.save (new Device ("Bedroom Light 1", "onoff", true, "Bedroom Light is Switched ON", lRoom2));
 		deviceService.save (new Device ("Bedroom Light 2", "onoff", true, "Bedroom Light is Switched ON", lRoom2));
+		deviceService.save (new Device ("Kitchen Light", "onoff", true, "Kitchen Light is Switched ON", lRoom3));
+		deviceService.save (new Device ("Oven", "onoff", true, "Oven is turned ON", lRoom3));
+		deviceService.save (new Device ("Refrigerator", "onoff", true, "Refrigerator is turned ON", lRoom3));
+		deviceService.save (new Device ("Bathroom Light", "onoff", true, "Bathroom Light is turned ON", lRoom4));
+		deviceService.save (new Device ("Jacuzzi", "onoff", true, "Jacuzzi is warming", lRoom4));
+		deviceService.save (new Device ("Garage Light", "onoff", true, "Garage Light is switched ON", lRoom5));
+		deviceService.save (new Device ("Garage Door", "onoff", true, "Garage Door is opened", lRoom5));
+		deviceService.save (new Device ("Yard Light", "onoff", true, "Yard Light is turned ON", lRoom6);
+		deviceService.save (new Device ("Fountain", "onoff", true, "Fountain is making everyone wet", lRoom6);
+
+
+
 
 		PersonRole userRole = new PersonRole ("ROLE_USER");
 		PersonRole adminRole = new PersonRole ("ROLE_ADMIN");
