@@ -7,6 +7,8 @@ import eu.codingschool.black.homeautomation.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 @Service
@@ -17,6 +19,9 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Autowired
     private RoomService roomService;
+
+    @Autowired
+    EntityManager em;
 
     @Override
     public List<Device>  findAll(){
@@ -42,5 +47,8 @@ public class DeviceServiceImpl implements DeviceService {
         return repository.save(new Device(device, roomService.findById(roomId)));
     }
 
-    public void deleteById(long id){repository.deleteById(id);}
+    public void deleteById(long id){
+        repository.deletePersonDevice(id);
+        repository.deleteById(id);
+    }
 }
