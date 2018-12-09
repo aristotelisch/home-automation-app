@@ -1,30 +1,43 @@
 package eu.codingschool.black.homeautomation.services;
 
+import eu.codingschool.black.homeautomation.entities.Device;
 import eu.codingschool.black.homeautomation.entities.Room;
+import eu.codingschool.black.homeautomation.repositories.DeviceRepository;
 import eu.codingschool.black.homeautomation.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RoomServiceImpl implements RoomService{
 
     @Autowired
-    private RoomRepository repository;
+    private RoomRepository roomRepository;
+
+    @Autowired
+    private DeviceService deviceService;
 
     @Override
-    public List<Room> findAll(){return repository.findAll();}
+    public List<Room> findAll(){return roomRepository.findAll();}
 
     @Override
-    public Room findById(long id){return repository.findById(id).orElse(null);}
+    public Room findById(long id){return roomRepository.findById(id).orElse(null);}
 
     @Override
     public Room save (Room room) {
-        return repository.save (room);
+        return roomRepository.save (room);
     }
 
     @Override
-    public void deleteById (long id) {repository.deleteById(id); }
+    public void deleteById (long id) {
+        List<Device> devices = deviceService.findAll();
+        List<Device> devicesInRoom = new ArrayList<>();
+        for (Device device : devices) {
+            if (device.getRoomId() == id) devicesInRoom.add(device);
+        }
+        for (Device device : devicesInRoom) deviceService.deleteById(device.getId());
+        roomRepository.deleteById(id);
+    }
 }

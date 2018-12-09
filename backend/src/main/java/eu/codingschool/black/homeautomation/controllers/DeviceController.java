@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -39,6 +40,7 @@ public class DeviceController {
      * Have not implemented any kind of checking on the Device input. ***
      */
     public Collection<Device> addDevice(@RequestBody Device device) {
+        if (Objects.isNull(device.getRoomId())) return null;
         service.save(device, device.getRoomId());
         return StreamSupport.stream(service.findAll().spliterator(), false)
                 .collect(Collectors.toList());
@@ -58,7 +60,7 @@ public class DeviceController {
      */
     @PutMapping("/devices")
     public Collection<Device> updateDevice(@RequestBody Device device){
-        System.out.println(device);
+//        System.out.println(device);
         service.save(device, device.getRoomId());
         return StreamSupport.stream(service.findAll().spliterator(), false)
                 .collect(Collectors.toList());

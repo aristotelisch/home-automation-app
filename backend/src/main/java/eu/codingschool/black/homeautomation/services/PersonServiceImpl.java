@@ -60,10 +60,16 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void save(Person person) {
+        //System.out.println(person.getPersonrole().getRolename() + "         SHIIIIIIIIIIIIIIIIIIT          " + person.getPersonrole());
         //encrypt the user password
         person.setPassword(passwordEncoder.encode(person.getPassword()));
+        personRoleRepository.save(person.getPersonrole());  // inserts mockRole                       /* object references an unsaved transient instance - save the transient instance before flushing *** */
         personRepository.save(person);
     }
+
+    // @Override
+    // public void deleteMockRole(){personRoleRepository.deleteMockRole();}
+
 
     @Override
     public Person findByPersonid(long id) {

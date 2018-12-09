@@ -20,30 +20,6 @@ public class Person {
     private long personid;
     private String personname;
 
-    public long getPersonid () {
-        return personid;
-    }
-
-    public void setPersonid (long personid) {
-        this.personid = personid;
-    }
-
-    public String getUsername () {
-        return username;
-    }
-
-  public void setUsername (String username) {
-        this.username = username;
-    }
-
-    public Set<Device> getDevice () {
-        return device;
-    }
-
-    public void setDevice (Set<Device> device) {
-        this.device = device;
-    }
-
     @Column(nullable = false, unique = true)
     private String username;
     private String surname;
@@ -73,6 +49,32 @@ public class Person {
         this(personname, surname, email, password, personrole);
         this.personid = personid;
     }
+
+    public long getPersonid () {
+        return personid;
+    }
+
+    public void setPersonid (long personid) {
+        this.personid = personid;
+    }
+
+    public String getUsername () {
+        return username;
+    }
+
+    public void setUsername (String username) {
+        this.username = username;
+    }
+
+    public Set<Device> getDevice () {
+        return device;
+    }
+
+    public void setDevice (Set<Device> device) {
+        this.device = device;
+    }
+
+
 
     public long getId() {
         return personid;
