@@ -17,8 +17,8 @@ import { ActivatedRoute } from '@angular/router';
 export class DevicesComponent implements OnInit {
 
   devices: Device[] = [];
-  // rooms: Room[] = [];
-  // selectedRoomId: number;
+  rooms: Room[] = [];
+  selectedRoomId: number;
   roomId: number;
 
 

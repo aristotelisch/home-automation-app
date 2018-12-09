@@ -3,7 +3,6 @@ package eu.codingschool.black.homeautomation.controllers;
 import eu.codingschool.black.homeautomation.entities.Device;
 import eu.codingschool.black.homeautomation.entities.Person;
 import eu.codingschool.black.homeautomation.entities.PersonRole;
-import eu.codingschool.black.homeautomation.entities.Room;
 import eu.codingschool.black.homeautomation.repositories.PersonRoleRepository;
 import eu.codingschool.black.homeautomation.services.DeviceService;
 import eu.codingschool.black.homeautomation.services.PersonService;
@@ -12,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -104,6 +102,7 @@ public class PersonController {
     @PostMapping("/users")
     public Collection<Person> addDevice(@RequestBody Person person) {
         personService.save (person);
+        //personService.deleteMockRole();
         return StreamSupport.stream (personService.findAll ().spliterator (), false)
                 .collect (Collectors.toList ());
     }
@@ -131,7 +130,7 @@ public class PersonController {
     public boolean register(@RequestBody Person person) {
         try {
             if (person != null) {
-                PersonRole userRole = personRoleRepository.findByRolename ("USER");
+                PersonRole userRole = personRoleRepository.findFirstByRolename("ROLE_USER");
                 person.setPersonrole (userRole);
                 personService.save (person);
                 return true;

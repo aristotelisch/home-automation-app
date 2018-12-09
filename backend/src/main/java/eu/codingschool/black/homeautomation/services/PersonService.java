@@ -11,6 +11,9 @@ public interface PersonService extends UserDetailsService {
     List<Person> findByPersonnameContaining(String searchterm);
     Person findByUsername(String username);
     void save(Person person);
+
+//    void deleteMockRole();
+
     Person findByPersonid(long id);
     List<Person> findAll();
     List<Person> findByPersonrole(PersonRole role);
