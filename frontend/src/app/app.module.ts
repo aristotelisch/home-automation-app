@@ -25,6 +25,7 @@ import { ManageDevicesComponent } from './components/manage-devices/manage-devic
 import { DashboardRoomsComponent } from './components/dashboard-rooms/dashboard-rooms.component';
 import { DashboardDevicesComponent } from './components/dashboard-devices/dashboard-devices.component';
 import { DeviceComponent } from './components/device/device.component';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { DeviceComponent } from './components/device/device.component';
     BrowserAnimationsModule,
     MessagesModule,
     MessageModule,
+    InputSwitchModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule

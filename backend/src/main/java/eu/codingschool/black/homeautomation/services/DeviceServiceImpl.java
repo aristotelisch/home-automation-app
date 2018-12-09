@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeviceServiceImpl implements DeviceService {
@@ -37,6 +38,11 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceList;
     }
 
+    @Override
+    public Device findById (long id) {
+        return repository.findById (id);
+    }
+
     public Device save(Device device){
         System.out.println("Save without roomID");
         return repository.save(device);
@@ -51,4 +57,5 @@ public class DeviceServiceImpl implements DeviceService {
         repository.deletePersonDevice(id);
         repository.deleteById(id);
     }
+
 }

@@ -3,6 +3,9 @@
   position: absolute;
   z-index: 101;
   top: 0;
-  width: 70%;
+  left: 0;
+  right: 0;
+  /*width: 70%;*/
   overflow: hidden;
 }
+

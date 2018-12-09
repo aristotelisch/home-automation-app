@@ -43,4 +43,9 @@ export class DeviceService {
   updateDevice(device: Device): Observable<Device[]> {
     return this.http.put<Device[]>(this.devicesUrl, device, { headers: this.app.authHeaders } );
   }
+
+  updateSingleDevice(device: Device): Observable<Device> {
+    console.log(device);
+    return this.http.get<Device>(this.devicesUrl + '/' + device.id + '/status/' + device.status, { headers: this.app.authHeaders } );
+  }
 }

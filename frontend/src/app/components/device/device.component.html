@@ -1,10 +1,7 @@
 
 
   <div class="container" class="text-center">
-    <div class="row" class="text-center">
-      <button [ngStyle]="{'color': 'white', 'background-color': 'black'}" onclick="document.getElementById('myImage').src='assets/img/devices/9.jpg'">OFF</button>
-      <button [ngStyle]="{'color': 'black', 'background-color': 'white'}" onclick="document.getElementById('myImage').src='assets/img/devices/10.jpg'">ON</button>
-    </div>
+    <p-inputSwitch (onChange)="handleChange($event)" [(ngModel)]="checked"></p-inputSwitch>
     <img id="myImage" src="assets/img/devices/9.jpg" style="width:300px" class="rounded-circle">
   </div>
   <div class="bathroom-caption" class="text-center">
@@ -13,7 +10,7 @@
       <h5>Information:</h5>
       <p>{{device.name}}</p>
       <p>{{device.information}}</p>
-      <p class="text-muted">Status: {{device.status}}</p>
+      <p class="text-muted">Status: {{device.status ? 'ON' : 'OFF' }}</p>
     </div>
   </div>
   <br>

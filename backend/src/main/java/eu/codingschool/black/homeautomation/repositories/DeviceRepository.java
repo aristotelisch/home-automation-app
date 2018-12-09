@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RepositoryRestResource
 public interface DeviceRepository extends JpaRepository<Device, Long>{
+  Device findById(long id);
 
     /**
      * Native SQL query ***
