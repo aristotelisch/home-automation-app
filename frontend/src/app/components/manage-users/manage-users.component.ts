@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {User} from '../../models/User';
 import {UserService} from '../../services/user.service';
 import {MessageService} from 'primeng/api';
+import { Device } from 'src/app/models/Device';
+import { DeviceService } from 'src/app/services/device.service';
 
 @Component({
   selector: 'app-manage-users',
@@ -10,17 +12,27 @@ import {MessageService} from 'primeng/api';
 })
 export class ManageUsersComponent implements OnInit {
   users: User[] = [];
+  devices: Device[] = [];
 
   constructor(private userService: UserService,
-              private messageService: MessageService
+              private messageService: MessageService,
+              private deviceService: DeviceService
   ) { }
 
   ngOnInit() {
     this.getUsers();
+    this.getDevices();
   }
+
+  
+
 
   getUsers(): void {
     this.userService.getUsers().subscribe(data => this.users = data);
+  }
+
+  getDevices(): void {
+    this.deviceService.getDevices().subscribe(value => this.devices = value);
   }
 
   addUser(username: string, email: string, personname: string, password: string, surname: string) {

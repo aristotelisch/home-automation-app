@@ -25,6 +25,7 @@ import { ManageDevicesComponent } from './components/manage-devices/manage-devic
 import { DashboardRoomsComponent } from './components/dashboard-rooms/dashboard-rooms.component';
 import { DashboardDevicesComponent } from './components/dashboard-devices/dashboard-devices.component';
 import { DeviceComponent } from './components/device/device.component';
+import { MultipleMaterialSelectComponent } from './multiple-material-select/multiple-material-select.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { DeviceComponent } from './components/device/device.component';
     ManageDevicesComponent,
     DashboardRoomsComponent,
     DashboardDevicesComponent,
-    DeviceComponent,
+    MultipleMaterialSelectComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
